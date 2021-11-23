@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./components/Nav";
-import { CityContext } from "./context/ListCity";
+import { CityContext, CityContextProvider } from "./context/ListCity";
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
@@ -17,17 +17,17 @@ const App = () => {
   return (
     <Body>
       <BrowserRouter>
-        <CityContext>
+        <CityContextProvider>
           <div>
             <Nav />
           </div>
           <Routes>
-            <Route exact path="/" component={Home} />
-            <Route path="/hotel/:city" component={Hotels} />
-            <Route path="/hotel/:id" component={HotelPage} />
-            <Route path="*" component={NotFound} />
+            <Route exact path="/" element={<Home/>} />
+            <Route path="/hotel/:city" element={<Hotels/>} />
+            <Route path="/hotel/:id" element={<HotelPage/>} />
+            <Route path="*" element={<NotFound/>} />
           </Routes>
-        </CityContext>
+        </CityContextProvider>
       </BrowserRouter>
     </Body>
   );
