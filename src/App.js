@@ -1,35 +1,36 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styled from 'styled-components';
-import Nav from './components/Nav';
-import Home from './pages/Home';
-import HotelPage from './pages/HotelPage';
-import Hotels from './pages/Hotels'
-import NotFound from './pages/NotFound';
+import styled from "styled-components";
+import Nav from "./components/Nav";
+import { CityContext } from "./context/ListCity";
+import Home from "./pages/Home";
+import HotelPage from "./pages/HotelPage";
+import Hotels from "./pages/Hotels";
+import NotFound from "./pages/NotFound";
 
-const Body = styled.div `
-  background-color: #3F3260;
+const Body = styled.div`
+  background-color: #3f3260;
   color: white;
-  font-family: 'Alegreya Sans SC', sans-serif;
-`
+  font-family: "Alegreya Sans SC", sans-serif;
+`;
 
 const App = () => {
-    return (
-      <Body>
+  return (
+    <Body>
       <BrowserRouter>
-      <div>
-        <Nav/>
-      </div>
-      <Routes>
-        <Route exact path="/" component={Home} />
-        <Route path="/hotel/:city" component={Hotels}/>
-        <Route path="/hotel/:id" component={HotelPage}/>
-        <Route path="*" component={NotFound} />
-      </Routes>
+        <CityContext>
+          <div>
+            <Nav />
+          </div>
+          <Routes>
+            <Route exact path="/" component={Home} />
+            <Route path="/hotel/:city" component={Hotels} />
+            <Route path="/hotel/:id" component={HotelPage} />
+            <Route path="*" component={NotFound} />
+          </Routes>
+        </CityContext>
       </BrowserRouter>
-      </Body>
-    )
-  }
+    </Body>
+  );
+};
 
-
-export default App
+export default App;
