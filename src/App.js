@@ -8,11 +8,11 @@ import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
 import NotFound from "./pages/NotFound";
 
-const Body = styled.div`
-  background-color: #3f3260;
+
+const Body = styled.div `
+  background-color: #3F3260;
   color: white;
-  font-family: "Alegreya Sans SC", sans-serif;
-`;
+`
 
 const App = () => {
   return (
@@ -33,5 +33,4 @@ const App = () => {
     </Body>
   );
 };
-
-export default App;
+export default App
