@@ -45,7 +45,7 @@ const Nav = () => {
           <li className="nav-item">
             <Link
               className="nav"
-              to="/hotel/:city"
+              to="/hotel"
               style={{
                 color: "white",
                 padding: "20px",
