@@ -32,7 +32,7 @@ const Nav =() => {
                             <Link className='nav' to="/" style={{color: "white",padding:"20px", fontFamily:" Sans SC', sans-serif", textDecoration:"none",  fontSize:"25px"}}>HOME</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className='nav' to="/hotel/:city" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>HOTELS</Link>
+                            <Link className='nav' to="/hotel/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>HOTELS</Link>
                         </li>
                         <li className="nav-item">
                             <Link className='nav' to="" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>FAVORITES</Link>

@@ -4,12 +4,13 @@ import styled from 'styled-components'
 // import { HotelsContext } from '../context/ListHotel'
 
 const CardBox = styled.div `
-color: white;
 background: #B7094C;
 border-radius: 20px;
-margin: 5px;
 height: 100px;
-zéa
+background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/a1/d2/af/hotel-r-de-paris.jpg?w=900&h=-1&s=1");
+background-position: left;
+background-size: 40%;
+background-repeat: no-repeat;
 `
 
 const CardContainer = styled.div `
