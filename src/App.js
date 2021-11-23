@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
 
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from 'styled-components';
 import Nav from './components/Nav';
 import Home from './pages/Home';
