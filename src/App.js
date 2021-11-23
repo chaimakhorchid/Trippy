@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import Nav from "./components/Nav";
+import { CityContext } from "./context/ListCity";
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
 import NotFound from "./pages/NotFound";
 
-class App extends Component {
-  render() {
-    const title = "Trippy";
-    return (
+const Body = styled.div`
+  background-color: #3f3260;
+  color: white;
+  font-family: "Alegreya Sans SC", sans-serif;
+`;
+
+const App = () => {
+  return (
+    <Body>
       <BrowserRouter>
-        <ListHotel>
+        <CityContext>
           <div>
-            <nav>
-              <ul style={{ listStyle: "none" }}>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-              </ul>
-            </nav>
+            <Nav />
           </div>
           <Routes>
             <Route exact path="/" component={Home} />
@@ -27,10 +27,10 @@ class App extends Component {
             <Route path="/hotel/:id" component={HotelPage} />
             <Route path="*" component={NotFound} />
           </Routes>
-        </ListHotel>
+        </CityContext>
       </BrowserRouter>
-    );
-  }
-}
+    </Body>
+  );
+};
 
 export default App;
