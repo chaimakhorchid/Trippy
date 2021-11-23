@@ -2,7 +2,7 @@ import "./App.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from 'styled-components'
 import Nav from "./components/Nav";
-import { CityContextProvider } from "./context/ListCity";
+import { CityContext, CityContextProvider } from "./context/ListCity";
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
@@ -24,7 +24,7 @@ const App = () => {
           </div>
           <Routes>
             <Route exact path="/" element={<Home/>} />
-            <Route exact path="/hotel" element={<Hotels/>} />
+            <Route path="/hotel/" element={<Hotels/>} />
             <Route path="/hotel/:id" element={<HotelPage/>} />
             <Route path="*" element={<NotFound/>} />
           </Routes>
