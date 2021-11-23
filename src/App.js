@@ -1,5 +1,6 @@
+import "./App.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styled from "styled-components";
+import styled from 'styled-components'
 import Nav from "./components/Nav";
 import { CityContextProvider } from "./context/ListCity";
 import Home from "./pages/Home";
