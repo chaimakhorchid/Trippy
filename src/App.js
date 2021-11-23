@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import Home from './pages/Home';
+import HotelPage from './pages/HotelPage';
+import Hotels from './pages/Hotels'
+import NotFound from './pages/NotFound';
+
+
+
+class App extends Component {
+  render() {
+    const title = "Trippy"
+    return (
+      <BrowserRouter>
+      <div>
+          <nav>
+            <ul style={{listStyle:"none"}}>
+              <li><Link to="/">Home</Link></li>
+            </ul>
+          </nav>
+          </div>
+      <Routes>
+        <Route exact path="/" component={Home} />
+        <Route path="/hotel/:city" component={Hotels}/>
+        <Route path="/hotel/:id" component={HotelPage}/>
+        <Route path="*" component={NotFound} />
+      </Routes>
+      </BrowserRouter>
+
+    )
+  }
 }
 
-export default App;
+export default App
