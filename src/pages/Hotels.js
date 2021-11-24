@@ -3,6 +3,7 @@ import { HotelsContext } from '../context/ListHotel'
 
 import styled from 'styled-components'
 import HotelCard from '../components/HotelCard'
+import HotelMap from '../components/HotelMap'
 
 const Container = styled.div `
 display: flex;
@@ -41,7 +42,7 @@ const Hotels = () => {
                 )}
             </HotelsList>
             <HostelsMap>
-                <img style={{ overflow: "hidden" }} src="https://docs.microsoft.com/fr-fr/azure/azure-maps/media/migrate-google-maps-web-app/simple-google-map.png" alt="googleMap"/>
+                <HotelMap />
             </HostelsMap>
            
         </Container>

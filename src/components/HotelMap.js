@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from 'styled-components'
 import { MapContext } from '../context/Map'

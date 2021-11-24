@@ -1,14 +1,24 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useContext, useState } from "react";
+import { HotelsContext } from "./ListHotel";
 
 const MapContext = createContext({})
 
 const MapContextProvider = props => {
-  const { hotel } = useContext(HotelContext)
-  const [ locations, setLocations ] = useState({ lat: hotel.lat, lng: hotel.lng})
+  const [location, setLocation] = useState(null)
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        setLocation({ lat: position.coords.latitude, lng: position.coords.longitude })
+      });
+    } else {
+      console.log("no position")
+    }
+  }, [])
 
   const value = {
-    locations,
-  }  
+    location,
+  } 
 
   return (
     <MapContext.Provider value={value}>
