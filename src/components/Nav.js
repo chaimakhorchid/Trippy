@@ -14,7 +14,6 @@ const List = styled.ul`
   border-bottom: 1px solid white;
 `;
 
-
 const Title = styled.h1`
   font-family: "Alegreya Sans SC", sans-serif;
 `;
@@ -22,52 +21,32 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+const menuStyle = {
+  color: "white",
+  padding: "20px",
+  textDecoration: "none",
+  fontSize: "25px",
+};
+
 const Nav = () => {
   return (
     <>
       <List className="nav">
         <Title>TRIPPY TRAVEL</Title>
         <Row>
-          <li className="nav-item">
-            <Link
-              className="nav"
-              to="/"
-              style={{
-                color: "white",
-                padding: "20px",
-                fontFamily: " Sans SC', sans-serif",
-                textDecoration: "none",
-                fontSize: "25px",
-              }}
-            >
+          <li>
+            <Link className="nav" to="/" style={menuStyle}>
               HOME
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              className="nav"
-              to="/hotel/:city"
-              style={{
-                color: "white",
-                padding: "20px",
-                textDecoration: "none",
-                fontSize: "25px",
-              }}
-            >
+            <Link className="nav" to="/hotel/" style={menuStyle}>
               HOTELS
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              className="nav"
-              to=""
-              style={{
-                color: "white",
-                padding: "20px",
-                textDecoration: "none",
-                fontSize: "25px",
-              }}
-            >
+          <li>
+            <Link className="nav" to="" style={menuStyle}>
               FAVORITES
             </Link>
           </li>
@@ -76,4 +55,5 @@ const Nav = () => {
     </>
   );
 };
+
 export default Nav;
