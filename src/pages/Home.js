@@ -25,7 +25,7 @@ const Home = () => {
 
         <CityContainer>
             {cities.map(city => (
-                <CityCard key={city.id} source={city.source} name={city.name}/>
+                <CityCard key={city.id} source={city.source} name={city.name} slug={city.slug}/>
             )
             )}
         </CityContainer>

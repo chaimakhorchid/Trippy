@@ -14,6 +14,10 @@ height: 100px;
 display: flex;
 justify-content: flex-start;
 overflow: hidden;
+
+:hover {
+    background-color: #892B64;
+}
 `
 
 const CardImage = styled.div `

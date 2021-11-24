@@ -27,9 +27,10 @@ padding-left: 10px;
 const Hotels = () => {
     const [ hotels, setHotels ] = useState(null);
     const [ center, setCenter ] = useState(null)
-    const [ page, setPage ] = useState(0)
+    const [ page, setPage ] = useState(1)
     let { city } = useParams()
    
+    console.log("hotels", city)
 
   useEffect(() => {    
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
