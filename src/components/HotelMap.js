@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from 'styled-components'
-import { MapContext } from '../context/Map'
+import { HotelsContext } from "../context/ListHotel";
 // import HotelMarker from "./HotelMarker";
 
 const MapContainer = styled.div`
@@ -15,19 +15,19 @@ const MapContainer = styled.div`
 `
 
 const Map = () => {
-  const { location } = useContext(MapContext);
+  const { centers } = useContext(HotelsContext)
 
-  if (!location) {
+  if (!centers) {
     return <p>Chargement...</p>;
   }
 
-  console.log(location)
+  // console.log(centers)
 
   return (
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
-        defaultCenter={location}
+        defaultCenter={centers}
         defaultZoom={14}
       >
 

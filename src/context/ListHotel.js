@@ -5,21 +5,21 @@ const HotelsContext = createContext({});
 
 const HotelsContextProvider = (props) => {
   const [ hotels, setHotels ] = useState(null);
+  const [ centers, setCenters ] = useState(null)
   const { city } = useContext(CitiesContext);
 
   useEffect(() => {
-    // const cityLowerCase = city.toLowerCase()
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city.toLowerCase()}`)
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
     .then(res => res.json())
     .then(data => 
-      setHotels(data.results)
+      setHotels(data.results),
+      setCenters(data.center)
     )
   }, [city])
-    
-    console.log(typeof city, city)
 
   const value = {
     hotels,
+    centers
   };
 
   return (

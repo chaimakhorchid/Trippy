@@ -37,7 +37,7 @@ const CityCard = props => {
     console.log(city)
     return (
         <>
-        <Card onClick={() => handleCLick(props.name)}>
+        <Card onClick={() => handleCLick(props.slug)}>
             <div></div>
             <p><Link to={`/hotel/${props.name}`} style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>{props.name}</Link></p>
         </Card>
