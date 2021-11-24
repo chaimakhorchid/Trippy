@@ -1,46 +1,49 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { CityContextProvider, CityContext } from '../context/ListCity'
+import { CitiesContext } from '../context/ListCity'
 // import { HotelsContext } from '../context/ListHotel'
 
-const Card = styled.div`
-    background-color: #B7094C;
-    border-radius: 0.5rem;
-    box-shadow: 0.05rem;
-    padding-bottom: 1rem;
-    overflow: hidden;
-
-    img {
-        border-radius: 0.5rem 0.5rem 0 0;
-        width: 400px;
-	    height: 300px;
-        background-position: center;
-        
-        object-fit: cover;
-        max-height: max(10rem, 30vh);
-
-    }
-
-    h3 {
-        margin-top: 1rem;
-        font-size: 1.25rem;
-    }
-
-`
 const CityCard = props => {
-    const { city, setCity } = useContext(CityContext)
+    const { city, setCity } = useContext(CitiesContext)
 
-    function handleCLick() {
-        setCity(props.name)
+    const Card = styled.div`
+    background-color: #B7094C;
+    border-radius: 2.5rem 2.5rem 2.5rem 2.5rem; 
+    width: 350px;
+    height: 250px; 
+    margin: 0 2%;
+    text-align: center;
+
+    div {
+        background : url('https://trippy-konexio.herokuapp.com/${props.source}') no-repeat center/cover;
+        height: 75%;
+        width: 100%;
+        background-position: center;
+        border-radius: 2.5rem 2.5rem 0 0; 
+        
+        
+
+    }
+
+    p {
+        font-size: 1.25rem;
+        fontFamily:" Sans SC', sans-serif"
+    }
+    
+    `
+
+    function handleCLick(city) {
+        setCity(city)
     }
 
     console.log(city)
-
     return (
-        <Card onclick={handleCLick}>
-            <img src={`https://trippy-konexio.herokuapp.com/${props.source}`} alt="city" />
-            <h3><Link to= {`/hotel/${props.name}`}>{props.name}</Link></h3>
+        <>
+        <Card onClick={() => handleCLick(props.name)}>
+            <div></div>
+            <p><Link to={`/hotel/${props.name}`} style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>{props.name}</Link></p>
         </Card>
+        </>
     )}
 export default CityCard

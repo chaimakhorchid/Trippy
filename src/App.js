@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./components/Nav";
-import { CityContextProvider } from "./context/ListCity";
+import { CitiesContextProvider } from "./context/ListCity";
 import { HotelsContextProvider } from "./context/ListHotel"
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
@@ -14,13 +14,15 @@ import { HotelContextProvider } from "./context/Hotel";
 const Body = styled.div `
   background-color: #3F3260;
   color: white;
-`
+  font-family: "Alegreya Sans SC", sans-serif;
+  height: 100vh;
+`;
 
 const App = () => {
   return (
     <Body>
       <BrowserRouter>
-        <CityContextProvider>
+        <CitiesContextProvider>
           <HotelsContextProvider>
             <HotelContextProvider>
               <div>
@@ -34,7 +36,7 @@ const App = () => {
               </Routes>
             </HotelContextProvider>
           </HotelsContextProvider>
-        </CityContextProvider>
+        </CitiesContextProvider>
       </BrowserRouter>
     </Body>
   );
