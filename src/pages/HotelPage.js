@@ -1,17 +1,6 @@
 import { useEffect, useState } from 'react'
 
 const HotelPage = () => {
-  const [ infoHotels, setInfoHotels ] = useState([])
-
-  // useEffect(() => {
-  //   fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-  //   .then(res => res.json)
-  //   .then(data => 
-  //     setInfoHotels(data)
-  //   )
-  // })
- 
-  // console.log(infoHotels)
 
   return (
    <>

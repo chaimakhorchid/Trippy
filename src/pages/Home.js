@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import CityCard from "../components/CityCard";
-import { CityContext } from '../context/ListCity'
+import { CitiesContext } from '../context/ListCity'
 
 const CityContainer = styled.div`
     height: 80vh;
@@ -14,15 +14,15 @@ const CityContainer = styled.div`
 ` 
 
 const Home = () => {
-    const { city } = useContext(CityContext)
+    const { cities } = useContext(CitiesContext)
 
-    console.log(city)
+    console.log(cities)
 
     return (
 
         <CityContainer>
-            {city.map(city => (
-                <CityCard key={city.id} source={city.source} name={city.name}/>
+            {cities.map(city => (
+                <CityCard key={city.id} source={city.source} name={city.name} slug={city.slug}/>
             )
             )}
         </CityContainer>

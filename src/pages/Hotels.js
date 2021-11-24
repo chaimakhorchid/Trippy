@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
-import { HotelsContext } from '../context/ListHotel'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import styled from 'styled-components'
 import HotelCard from '../components/HotelCard'
-import ButtonPage from '../components/ButtonPage'
-
+import HotelMap from '../components/HotelMap'
+// import ButtonPage from '../components/ButtonPage'
 
 const Container = styled.div `
 display: flex;
@@ -26,8 +26,24 @@ padding-left: 10px;
 
 
 const Hotels = () => {
-    const { hotels, setHotels } = useContext(HotelsContext)
-    const { hover, setHover } = useState(false)
+  const [ hotels, setHotels ] = useState(null);
+  const [ center, setCenter ] = useState(null)
+  let { city } = useParams()
+  
+  useEffect(() => {
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+    .then(res => res.json())
+    .then(data => {
+      setHotels(data.results)
+      setCenter(data.center)
+    })
+  }, [])
+
+  if (!center) {
+    return <p>Chargement...</p>;
+  }
+
+    console.log("city:", city)
 
     return (
         <Container>
@@ -48,7 +64,7 @@ const Hotels = () => {
                 <button></button>
             </HotelsList>
             <HostelsMap>
-                <img style={{ overflow: "hidden" }} src="https://docs.microsoft.com/fr-fr/azure/azure-maps/media/migrate-google-maps-web-app/simple-google-map.png" alt="googleMap"/>
+                <HotelMap center={center}/>
             </HostelsMap>
            
         </Container>
