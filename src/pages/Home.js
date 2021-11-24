@@ -4,7 +4,6 @@ import CityCard from "../components/CityCard";
 import { CitiesContext } from '../context/ListCity'
 
 const CityContainer = styled.div`
-
     height: 80vh;
     margin-top: 2%;
     display: flex;

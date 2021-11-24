@@ -8,13 +8,15 @@ const HotelContextProvider = (props) => {
 
   useEffect(() => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-      .then((res) => res.json())
-      .then((data) => setHotel(data.result));
-  }, [id]);
-
-  const value = {
-    hotel,
-  };
+    .then(res => res.json())
+    .then(data => 
+      setHotel(data.results)
+    )
+  }, [id])
+    
+    const value = {
+      hotel
+    }
 
   return (
     <HotelContext.Provider value={value}>

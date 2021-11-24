@@ -16,11 +16,7 @@ const Body = styled.div `
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
   height: 100vh;
-
-  @media (max-width: 376px) {
-    height: 137vh;
-  }
-`
+`;
 
 const App = () => {
   return (

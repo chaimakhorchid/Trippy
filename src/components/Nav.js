@@ -14,16 +14,25 @@ const List = styled.ul`
     list-style: none;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid white
   `
 
 const Title = styled.h1`
 font-family: 'Alegreya Sans SC', sans-serif;
 
 `
-const  Row = styled.div`
+const Row = styled.div`
 display: flex;
 flex-direction: row;
 `
+
+const menuStyle = {
+    color: "white",
+    padding:"20px", 
+    textDecoration:"none",  
+    fontSize:"25px",
+}
+
 
 const Nav =() => {
 
@@ -41,13 +50,13 @@ const Nav =() => {
                     :(
                     <Row>
                         <li>
-                            <Link className='nav' to="/" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>HOME</Link>
+                            <Link className='nav' to="/" style={menuStyle}>HOME</Link>
                         </li>
                         <li>
                             <Link className='nav' to="/hotel/:city" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>HOTELS</Link>
                         </li>
                         <li>
-                            <Link className='nav' to="" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>FAVORITES</Link>
+                            <Link className='nav' to="" style={menuStyle}>FAVORITES</Link>
                         </li>
                         <li>
                             <Link className='nav' to="/hotel/hotelpage" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>HOTELPAGE</Link>
