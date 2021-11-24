@@ -13,6 +13,7 @@ const List = styled.ul `
     list-style: none;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid white;
   `
 
 const Title = styled.h1`
