@@ -25,7 +25,7 @@ const CityCard = props => {
         border-radius: 2.5rem 2.5rem 0 0;    
     }
 
-    @media (min-width: 374px) {
+    @media (max-width: 376px) {
         height: 50%;
         width: 90%;
 

@@ -16,7 +16,7 @@ const Body = styled.div `
   font-family: "Alegreya Sans SC", sans-serif;
   height: 100vh;
 
-  @media (min-width: 374px) {
+  @media (max-width: 376px) {
     height: 137vh;
   }
 `
