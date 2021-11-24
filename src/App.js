@@ -13,7 +13,9 @@ import NotFound from "./pages/NotFound";
 const Body = styled.div `
   background-color: #3F3260;
   color: white;
-`
+  font-family: "Alegreya Sans SC", sans-serif;
+  height: 100vh;
+`;
 
 const App = () => {
   return (

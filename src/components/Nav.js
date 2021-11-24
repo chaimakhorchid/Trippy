@@ -18,24 +18,27 @@ const List = styled.ul `
 
 const Title = styled.h1`
 font-family: 'Alegreya Sans SC', sans-serif;
+
 `
 const  Row = styled.div`
 display: flex;
 flex-direction: row;
 `
+
 const Nav =() => {
         return (
             <>
+            
                     <List className="nav">
                     <Title>TRIPPY TRAVEL</Title>
                     <Row>
-                        <li className="nav-item">
-                            <Link className='nav' to="/" style={{color: "white",padding:"20px", fontFamily:" Sans SC', sans-serif", textDecoration:"none",  fontSize:"25px"}}>HOME</Link>
+                        <li>
+                            <Link className='nav' to="/" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>HOME</Link>
                         </li>
                         <li className="nav-item">
                             <Link className='nav' to="/hotel/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>HOTELS</Link>
                         </li>
-                        <li className="nav-item">
+                        <li>
                             <Link className='nav' to="" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>FAVORITES</Link>
                         </li>
                     </Row>
@@ -43,6 +46,8 @@ const Nav =() => {
             </>    
     )
     }
+
+
 export default Nav
 
 

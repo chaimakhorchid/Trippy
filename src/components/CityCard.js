@@ -2,35 +2,36 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { CityContextProvider } from '../context/ListCity'
 
-const Card = styled.div`
+const CityCard = props => {
+
+    const Card = styled.div`
     background-color: #B7094C;
-    border-radius: 0.5rem;
-    box-shadow: 0.05rem;
-    padding-bottom: 1rem;
-    overflow: hidden;
+    border-radius: 2.5rem 2.5rem 2.5rem 2.5rem; 
+    width: 350px;
+    height: 250px; 
+    margin: 0 2%;
+    text-align: center;
 
-    img {
-        border-radius: 0.5rem 0.5rem 0 0;
-        width: 400px;
-	    height: 300px;
+    div {
+        background : url('https://trippy-konexio.herokuapp.com/${props.source}') no-repeat center/cover;
+        height: 75%;
+        width: 100%;
         background-position: center;
-        
-        object-fit: cover;
-        max-height: max(10rem, 30vh);
-
+        border-radius: 2.5rem 2.5rem 0 0; 
     }
 
-    h3 {
-        margin-top: 1rem;
+    p {
         font-size: 1.25rem;
+        fontFamily:" Sans SC', sans-serif"
     }
 
 `
-const CityCard = props => {
     return (
+        <>
         <Card>
-            <img src={`https://trippy-konexio.herokuapp.com/${props.source}`} alt="city" />
-            <h3><Link to= "/hotel/:city">{props.name}</Link></h3>
+            <div></div>
+            <p><Link to= "/hotel/:city" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>{props.name}</Link></p>
         </Card>
+        </>
     )}
 export default CityCard
