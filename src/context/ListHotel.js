@@ -1,36 +1,32 @@
-import { useEffect, useState, createContext, useContext } from "react"
-import { CityContext, CityContextProvider } from "./ListCity"
+import { useEffect, useState, createContext, useContext } from "react";
+import { CitiesContext } from "./ListCity";
 
-const HotelsContext = createContext({})
+const HotelsContext = createContext({});
 
-const HotelsContextProvider = props => {
-  const [ hotels, setHotels ] = useState(null)
-  const city = 'paris'
+const HotelsContextProvider = (props) => {
+  const [ hotels, setHotels ] = useState(null);
+  const { city } = useContext(CitiesContext);
 
   useEffect(() => {
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+    // const cityLowerCase = city.toLowerCase()
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city.toLowerCase()}`)
     .then(res => res.json())
     .then(data => 
       setHotels(data.results)
     )
-  }, [])
+  }, [city])
     
-    const value = {
-      hotels
-    }
-    
-    console.log("liste",hotels)
+    console.log(typeof city, city)
 
-  return(
-    <CityContextProvider>
-      <HotelsContext.Provider value={value}>
-        {props.children}
-      </HotelsContext.Provider>
-    </CityContextProvider>
-  )
-}
+  const value = {
+    hotels,
+  };
 
-export {
-  HotelsContext,
-  HotelsContextProvider,
-}
+  return (
+    <HotelsContext.Provider value={value}>
+      {props.children}
+    </HotelsContext.Provider>
+  );
+};
+
+export { HotelsContext, HotelsContextProvider };

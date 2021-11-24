@@ -3,17 +3,12 @@ import { createContext, useEffect } from "react";
 const MapContext = createContext({})
 
 const MapContextProvider = props => {
-  const [ locations, setLocations ] = useState(null)
+  const { hotel } = useContext(HotelContext)
+  const [ locations, setLocations ] = useState({ lat: hotel.lat, lng: hotel.lng})
 
   const value = {
     locations,
-    setLocations,
   }  
-
-  useEffect(() => {
-
-
-  })
 
   return (
     <MapContext.Provider value={value}>

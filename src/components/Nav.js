@@ -1,9 +1,11 @@
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import {GiHamburgerMenu, GiReturnArrow} from 'react-icons/gi'
+import { useState } from "react";
 
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
 
-const List = styled.ul `
+const List = styled.ul`
     liststyle: none
     margin: 10px;
     padding: 10px;
@@ -24,10 +26,19 @@ flex-direction: row;
 `
 
 const Nav =() => {
+
+    const [show, setShow] = useState(false);
+    const hamburgerClick = (boolean) => {
+        console.log('hamber', boolean);
+        setShow(boolean)
+    }
         return (
             <>
-                    <List className="nav">
+                    <List>
                     <Title>TRIPPY TRAVEL</Title>
+                    {!show ?
+                    <GiHamburgerMenu onClick={() => hamburgerClick(true)} />
+                    :(
                     <Row>
                         <li>
                             <Link className='nav' to="/" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>HOME</Link>
@@ -38,8 +49,14 @@ const Nav =() => {
                         <li>
                             <Link className='nav' to="" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>FAVORITES</Link>
                         </li>
+                        <li>
+                            <Link className='nav' to="/hotel/hotelpage" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>HOTELPAGE</Link>
+                        </li>
                     </Row>
-                    </List>   
+                    )
+}
+                    </List>
+
             </>    
     )
     }

@@ -1,13 +1,14 @@
-import "./App.css"
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 import Nav from "./components/Nav";
-import { CityContextProvider } from "./context/ListCity";
+import { CitiesContextProvider } from "./context/ListCity";
 import { HotelsContextProvider } from "./context/ListHotel"
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
 import NotFound from "./pages/NotFound";
+import { HotelContextProvider } from "./context/Hotel";
 
 
 const Body = styled.div `
@@ -25,19 +26,21 @@ const App = () => {
   return (
     <Body>
       <BrowserRouter>
-        <CityContextProvider>
+        <CitiesContextProvider>
           <HotelsContextProvider>
-            <div>
-              <Nav />
-            </div>
-            <Routes>
-              <Route exact path="/" element={<Home/>} />
-              <Route path="/hotel/" element={<Hotels/>} />
-              <Route path="/hotel/:id" element={<HotelPage/>} />
-              <Route path="*" element={<NotFound/>} />
-            </Routes>
+            <HotelContextProvider>
+              <div>
+                <Nav />
+              </div>
+              <Routes>
+                <Route exact path="/" element={<Home/>} />
+                <Route path="/hotel/:city" element={<Hotels/>} />
+                <Route path="/hotel/hotelpage" element={<HotelPage/>} />
+                <Route path="*" element={<NotFound/>} />
+              </Routes>
+            </HotelContextProvider>
           </HotelsContextProvider>
-        </CityContextProvider>
+        </CitiesContextProvider>
       </BrowserRouter>
     </Body>
   );

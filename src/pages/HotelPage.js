@@ -1,28 +1,31 @@
 import { useEffect, useState } from 'react'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-const HotelPage = () => {
-  const [ infoHotels, setInfoHotels ] = useState([])
 
-  // useEffect(() => {
-  //   fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-  //   .then(res => res.json)
-  //   .then(data => 
-  //     setInfoHotels(data)
-  //   )
-  // })
+
+const DemoCarousel = () => {
  
-  // console.log(infoHotels)
-
   return (
    <>
    <section>
       <div>
-        <p>Slider</p>
-      </div>
-
-      <div>
         <h1>Hotel name</h1>
         <div>
+        <Carousel>
+                <div>
+                    <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" />
+                    <p className="legend">chambre</p>
+                </div>
+                <div>
+                    <img src="assets/2.jpeg" />
+                    <p className="legend">salle de bain</p>
+                </div>
+                <div>
+                    <img src="assets/3.jpeg" />
+                    <p className="legend">view</p>
+                </div>
+            </Carousel>
           <div>
             <i>Star</i>
             <i>Star</i>
@@ -44,4 +47,4 @@ const HotelPage = () => {
  )
 }
 
-export default HotelPage
+export default DemoCarousel

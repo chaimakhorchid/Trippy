@@ -1,8 +1,11 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { CityContextProvider } from '../context/ListCity'
+import { CitiesContext } from '../context/ListCity'
+// import { HotelsContext } from '../context/ListHotel'
 
 const CityCard = props => {
+    const { city, setCity } = useContext(CitiesContext)
 
     const Card = styled.div`
     background-color: #B7094C;
@@ -35,13 +38,19 @@ const CityCard = props => {
         font-size: 1.25rem;
         fontFamily:" Sans SC', sans-serif"
     }
+    
+    `
 
-`
+    function handleCLick(city) {
+        setCity(city)
+    }
+
+    console.log(city)
     return (
         <>
-        <Card>
+        <Card onClick={() => handleCLick(props.name)}>
             <div></div>
-            <p><Link to= "/hotel/:city" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>{props.name}</Link></p>
+            <p><Link to={`/hotel/${props.name}`} style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>{props.name}</Link></p>
         </Card>
         </>
     )}
