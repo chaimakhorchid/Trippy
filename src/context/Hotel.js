@@ -11,7 +11,7 @@ const HotelContextProvider = props => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
     .then(res => res.json())
     .then(data => 
-      setHotel(data)
+      setHotel(data.results)
     )
   }, [id])
     
