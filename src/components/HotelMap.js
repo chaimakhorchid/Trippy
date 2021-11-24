@@ -9,8 +9,8 @@ const MapContainer = styled.div`
   width: 500px;
 
   @media-query(min-width: 360px) {
-    height: 200px;
-    width: 100%
+    height: calc(100vh - 70px);
+    width: 50%;
   }
 `
 

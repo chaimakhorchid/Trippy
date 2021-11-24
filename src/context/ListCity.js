@@ -9,12 +9,19 @@ const CityContextProvider = props => {
     fetch('https://trippy-konexio.herokuapp.com/api/home')
     .then(res => res.json())
     .then(data => 
+      // console.log(data.cities)
       setCity(data.cities)
     )
   }, [])
     
+
+  if(!city){
+    return <p>Loading...</p>
+  }
+
     const value = {
-      city
+      city,
+      setCity,
     }
 
   return(

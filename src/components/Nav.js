@@ -11,7 +11,9 @@ const List = styled.ul`
 	justify-content: space-between;
 	align-items: center;
 	height: 70px;
+  border-bottom: 1px solid white;
 `;
+
 
 const Title = styled.h1`
   font-family: "Alegreya Sans SC", sans-serif;
