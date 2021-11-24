@@ -15,6 +15,7 @@ const Body = styled.div`
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
   height: 100vh;
+  overflow: hidden;
 `;
 
 const App = () => {

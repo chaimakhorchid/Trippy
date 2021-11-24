@@ -4,7 +4,7 @@ import { AiFillStar, AiFillHeart } from "react-icons/ai";
 // import { useContext } from 'react'
 
 const CardBox = styled.div `
-margin-bottom: 10px;
+margin: 0px 20px 20px 0px;
 background: #B7094C;
 border-radius: 10px;
 height: 100px;

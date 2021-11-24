@@ -14,6 +14,18 @@ margin: 20px;
 const HotelsList = styled.div `
 width: 50%;
 padding-right: 10px;
+height: calc(100vh - 120px);
+overflow-y: scroll;
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #B7094C; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
 `
 const HostelsMap = styled.div `
 width: 50%;
