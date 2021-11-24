@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { HotelsContext } from '../context/ListHotel'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import styled from 'styled-components'
 import HotelCard from '../components/HotelCard'
@@ -22,7 +22,24 @@ padding-left: 10px;
 `
 
 const Hotels = () => {
-    const { hotels, setHotels } = useContext(HotelsContext)
+  const [ hotels, setHotels ] = useState(null);
+  const [ center, setCenter ] = useState(null)
+  let { city } = useParams()
+  
+  useEffect(() => {
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+    .then(res => res.json())
+    .then(data => {
+      setHotels(data.results)
+      setCenter(data.center)
+    })
+  }, [])
+
+  if (!center) {
+    return <p>Chargement...</p>;
+  }
+
+    console.log("city:", city)
 
     return (
         <Container>
@@ -42,7 +59,7 @@ const Hotels = () => {
                 )}
             </HotelsList>
             <HostelsMap>
-                <HotelMap />
+                <HotelMap center={center}/>
             </HostelsMap>
            
         </Container>

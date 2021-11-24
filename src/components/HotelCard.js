@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { AiFillStar, AiFillHeart } from "react-icons/ai";
 
-// import { HotelsContext } from '../context/ListHotel'
 // import { useContext } from 'react'
 
 const CardBox = styled.div `
