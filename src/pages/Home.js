@@ -10,7 +10,15 @@ const CityContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: 'Abel', sans-serif;   
+    font-family: 'Abel', sans-serif;
+    
+    @media (min-width: 374px) {
+        display: flex;
+        flex-wrap: wrap;
+        height 40vh;
+        margin : 30px;
+
+      }
 
 ` 
 

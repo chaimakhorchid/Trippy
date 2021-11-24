@@ -26,7 +26,6 @@ flex-direction: row;
 const Nav =() => {
         return (
             <>
-            
                     <List className="nav">
                     <Title>TRIPPY TRAVEL</Title>
                     <Row>

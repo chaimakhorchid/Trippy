@@ -12,16 +12,24 @@ const CityCard = props => {
     margin: 0 2%;
     text-align: center;
 
+    @media (max-width: 812px) {
+        margin: 5% 6%;
+
+      }
+
     div {
         background : url('https://trippy-konexio.herokuapp.com/${props.source}') no-repeat center/cover;
         height: 75%;
         width: 100%;
         background-position: center;
-        border-radius: 2.5rem 2.5rem 0 0; 
-        
-        
-
+        border-radius: 2.5rem 2.5rem 0 0;    
     }
+
+    @media (min-width: 374px) {
+        height: 50%;
+        width: 90%;
+
+      }
 
     p {
         font-size: 1.25rem;
