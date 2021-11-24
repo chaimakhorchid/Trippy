@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 import HotelCard from '../components/HotelCard'
 import HotelMap from '../components/HotelMap'
-// import ButtonPage from '../components/ButtonPage'
+
 
 const Container = styled.div `
 display: flex;
@@ -24,20 +24,21 @@ overflow: hidden;
 padding-left: 10px;
 `
 
-
 const Hotels = () => {
-  const [ hotels, setHotels ] = useState(null);
-  const [ center, setCenter ] = useState(null)
-  let { city } = useParams()
-  
-  useEffect(() => {
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+    const [ hotels, setHotels ] = useState(null);
+    const [ center, setCenter ] = useState(null)
+    const [ page, setPage ] = useState(0)
+    let { city } = useParams()
+   
+
+  useEffect(() => {    
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
     .then(res => res.json())
     .then(data => {
       setHotels(data.results)
       setCenter(data.center)
     })
-  }, [])
+  }, [city, page])
 
   if (!center) {
     return <p>Chargement...</p>;
@@ -61,7 +62,11 @@ const Hotels = () => {
                         />
                     ))
                 )}
-                <button></button>
+                <button onClick={() => setPage(1)} >1</button>
+                <button onClick={() => setPage(2)} >2</button>
+                <button onClick={() => setPage(3)} >3</button>
+                <button onClick={() => setPage(4)} >4</button>
+
             </HotelsList>
             <HostelsMap>
                 <HotelMap center={center}/>

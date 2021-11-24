@@ -14,9 +14,6 @@ const CitiesContextProvider = props => {
     )
   }, [])
     
-
-  
-
   const value = {
     cities,
   }

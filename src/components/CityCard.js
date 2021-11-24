@@ -1,31 +1,34 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { CitiesContext } from "../context/ListCity";
+
 
 const CityCard = (props) => {
-  const { city, setCity } = useContext(CitiesContext);
-
+ 
   const Card = styled.div`
     background-color: #b7094c;
     border-radius: 2.5rem 2.5rem 2.5rem 2.5rem;
-    width: 350px;
+    width: 25%;
     height: 250px;
-    margin: 0 2%;
+    margin: 2% 2%;
     text-align: center;
+    :hover {
+      background-color: #0091AD;
+      box-shadow: 0 0 10px #ADE8F4;
+    }
 
     div {
       background: url("https://trippy-konexio.herokuapp.com/${props.source}")
         no-repeat center/cover;
       height: 75%;
       width: 100%;
-      background-position: center;
+      background-position: bottom;
       border-radius: 2.5rem 2.5rem 0 0;
     }
 
     p {
       font-size: 1.25rem;
       fontfamily: " Sans SC', sans-serif";
+      margin-top: 10px;
     }
   `;
 

@@ -3,20 +3,24 @@ import styled from "styled-components";
 
 const List = styled.ul`
 	liststyle: none
-	margin: 10px;
+	margin: 5px;
 	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	list-style: none;
 	justify-content: space-between;
 	align-items: center;
-	height: 70px;
-  border-bottom: 1px solid white;
+    border-bottom: 1px solid white;
 `;
 
-
+const Li = styled.li`
+    :hover {
+        font-weight: bold; 
+    }
+`
 const Title = styled.h1`
   font-family: "Alegreya Sans SC", sans-serif;
+  margin-left: 20px;
 `;
 
 const Row = styled.div`
@@ -24,55 +28,44 @@ const Row = styled.div`
   flex-direction: row;
 `;
 
+const linkStyle = {
+    color: "white",
+    padding: "20px",
+    textDecoration: "none",
+    fontSize: "25px",
+}
+
 const Nav = () => {
   return (
     <>
-      <List className="nav">
-        <Title>TRIPPY TRAVEL</Title>
+      <List>
+        <Title>Trippy Travel</Title>
         <Row>
-          <li className="nav-item">
+          <Li>
             <Link
-              className="nav"
               to="/"
-              style={{
-                color: "white",
-                padding: "20px",
-                fontFamily: " Sans SC', sans-serif",
-                textDecoration: "none",
-                fontSize: "25px",
-              }}
+              style={linkStyle}
             >
               HOME
             </Link>
-          </li>
-          <li className="nav-item">
+          </Li>
+          <Li>
             <Link
-              className="nav"
               to="/hotel/:city"
-              style={{
-                color: "white",
-                padding: "20px",
-                textDecoration: "none",
-                fontSize: "25px",
-              }}
+              style={linkStyle}
             >
               HOTELS
             </Link>
-          </li>
-          <li className="nav-item">
+          </Li>
+          <Li>
             <Link
               className="nav"
               to=""
-              style={{
-                color: "white",
-                padding: "20px",
-                textDecoration: "none",
-                fontSize: "25px",
-              }}
+              style={linkStyle}
             >
               FAVORITES
             </Link>
-          </li>
+          </Li>
         </Row>
       </List>
     </>

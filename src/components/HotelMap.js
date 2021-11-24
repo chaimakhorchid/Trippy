@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from 'styled-components'
 // import HotelMarker from "./HotelMarker";
