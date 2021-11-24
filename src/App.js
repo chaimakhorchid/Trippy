@@ -27,10 +27,10 @@ const App = () => {
                 <Nav />
               </div>
               <Routes>
-                <Route exact path="/" component={Home} />
-                <Route path="/hotel/:city" component={Hotels} />
-                <Route path="/hotel/:id" component={HotelPage} />
-                <Route path="*" component={NotFound} />
+                <Route exact path="/" element={<Home/>} />
+                <Route path="/hotel/:city" element={<Hotels/>} />
+                <Route path="/hotel/:id" element={<HotelPage/>} />
+                <Route path="*" element={<NotFound/>} />
               </Routes>
             </HotelContextProvider>
           </HotelsContextProvider>
