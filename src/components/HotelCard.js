@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-// import MaterialIcon from 'react-google-material-icons'
+import { AiFillStar, AiFillHeart } from "react-icons/ai";
 
 // import { HotelsContext } from '../context/ListHotel'
 // import { useContext } from 'react'
@@ -50,18 +50,16 @@ const HotelCard = props => {
                         <h4>{props.name}</h4>
                         <p>{props.price}€</p>
                         <HotelStars>
-                            {/* {[...Array(props.stars)].map((i) => 
-                                    <MaterialIcon 
-                                        icon="star" 
+                            {[...Array(props.stars)].map((i) => 
+                                    <AiFillStar 
                                         size={14}
                                     />
-                            )} */}
+                            )}
                         </HotelStars>
                     </CardText>
-                    {/* <MaterialIcon 
-                        icon="favorite_border" 
+                    <AiFillHeart
                         size={24}
-                    /> */}
+                    />
                 </CardContent>
                 
         </CardBox>

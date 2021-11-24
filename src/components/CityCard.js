@@ -21,9 +21,6 @@ const CityCard = props => {
         width: 100%;
         background-position: center;
         border-radius: 2.5rem 2.5rem 0 0; 
-        
-        
-
     }
 
     p {
