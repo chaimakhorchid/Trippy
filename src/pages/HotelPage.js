@@ -12,22 +12,14 @@ const HotelStars = styled.div `
 display: flex;
 justify-content: flex-start;
 `
-const MapContainer = styled.div`
-  height: 500px;
-  width: 500px;
 
-  @media-query(min-width: 360px) {
-    height: calc(100vh - 70px);
-    width: 50%;
-  }
-`
 
 const HotelPage = (props) => {
   const [favIcon, setFavIcon] = useState(false) 
   const [ infoHotel, setInfoHotel ] = useState({})
   const id = useParams()
-  let center = props.center
-  
+
+
 
 // console.log(id)
 
@@ -130,22 +122,7 @@ const HotelPage = (props) => {
             </div>
           </div>
         </div>
-        <MapContainer>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={{
-          lat : center.lat,
-          lng : center.lon
-        }}
-        defaultZoom={14}
-      >
-
-        {/* <Marker 
-          lat={location.lat}
-          lng={location.lng}
-        /> */}
-      </GoogleMapReact>
-    </MapContainer>
+        <HotelMap/>
       </div>
    </section>
 
@@ -153,4 +130,4 @@ const HotelPage = (props) => {
  ) 
 } 
 
-export default HotelPage
+export default HotelPage;
