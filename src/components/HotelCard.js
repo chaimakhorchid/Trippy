@@ -21,7 +21,7 @@ overflow: hidden;
 `
 
 const CardImage = styled.div`
-  background-position: left;
+  background-position: bottom;
   background-size: cover;
   width: 40%;
 `;

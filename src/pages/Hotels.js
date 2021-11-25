@@ -15,7 +15,7 @@ const Container = styled.div`
 `
 
 const HotelsList = styled.div`
-  margin: 0 10px;
+  margin: 0 5px;
   width: 50%;
   padding-right: 10px;
   height: calc(100vh - 120px);
@@ -85,6 +85,7 @@ const Hotels = () => {
     // console.log("city:", city)
 
     return (
+        <>
         <Container>
             <HotelsList>
                 {hotels == null ? (
@@ -105,13 +106,6 @@ const Hotels = () => {
                         </Link>
                     ))
                 )}
-                <CenterPages>
-                  <Pages onClick={() => setPage(1)} >1</Pages>
-                  <Pages onClick={() => setPage(2)} >2</Pages>
-                  <Pages onClick={() => setPage(3)} >3</Pages>
-                  <Pages onClick={() => setPage(4)} >4</Pages>                  
-                </CenterPages>
-
             </HotelsList>
             <HotelsMap>
                 <HotelMap 
@@ -121,8 +115,14 @@ const Hotels = () => {
                   setSelectedHotel={setSelectedHotel}
                 />
             </HotelsMap>
-           
         </Container>
+            <CenterPages>
+            <Pages onClick={() => setPage(1)} >1</Pages>
+            <Pages onClick={() => setPage(2)} >2</Pages>
+            <Pages onClick={() => setPage(3)} >3</Pages>
+            <Pages onClick={() => setPage(4)} >4</Pages>                  
+        </CenterPages>
+        </>
     );
 };
 

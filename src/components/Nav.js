@@ -10,7 +10,7 @@ const List = styled.ul`
 	list-style: none;
 	justify-content: space-between;
 	align-items: center;
-	height: 70px;
+	height: 50px;
   border-bottom: 1px solid white;
 `;
 
