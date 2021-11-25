@@ -55,7 +55,7 @@ const HotelCard = (props) => {
 
   return (
     <Link
-      to={`/hotel/${props.id}`}
+      to={`/hotelpage/${props.id}`}
       style={{
         color: "white",
         textDecoration: "none",

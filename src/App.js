@@ -14,7 +14,6 @@ const Body = styled.div`
   background-color: #3f3260;
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
-  height: 100vh;
   width: 100%;
 `;
 
@@ -29,8 +28,8 @@ const App = () => {
             </div>
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/hotel/:city" element={<Hotels />} />
-              <Route path="/hotelpage/:id" element={<HotelPage />} />
+              <Route exact path="/hotels/:city" element={<Hotels />} />
+              <Route exact path="/hotelpage/:id" element={<HotelPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </HotelContextProvider>

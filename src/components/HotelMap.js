@@ -15,11 +15,13 @@ const MapContainer = styled.div`
 `
 
 const HotelMap = (props) => {
-  const setSelectedHotel = props.setSelectedHotel
+  const setSelectedHotel = props.setSelectedHotel 
   const hotels = props.hotels
   let center = props.center
 
-  console.log(selectedHotel)
+  // const {} = props
+
+  // console.log(selectedHotel)
   
   return (
     
@@ -43,7 +45,17 @@ const HotelMap = (props) => {
         ))}
       </GoogleMapReact>
     </MapContainer>
+    
   )
+}
+
+HotelMap.defaultProps = {
+  setSelectedHotel : () => {},
+  hotels : [],
+  center : {
+    lat: 48.856614,
+    lon: 2.3522219
+  } 
 }
 
 export default HotelMap
