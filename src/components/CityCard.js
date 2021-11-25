@@ -6,10 +6,10 @@ const CityCard = (props) => {
  
   const Card = styled.div`
     background-color: #b7094c;
-    border-radius: 2.5rem 2.5rem 2.5rem 2.5rem;
+    border-radius: 2.5rem;
     width: 25%;
     height: 250px;
-    margin: 2% 2%;
+    margin: 0 2%;
     text-align: center;
     :hover {
       background-color: #0091AD;
