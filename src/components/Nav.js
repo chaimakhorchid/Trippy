@@ -10,7 +10,8 @@ const List = styled.ul`
 	list-style: none;
 	justify-content: space-between;
 	align-items: center;
-    border-bottom: 1px solid white;
+	height: 70px;
+  border-bottom: 1px solid white;
 `;
 
 const Li = styled.li`
@@ -71,4 +72,5 @@ const Nav = () => {
     </>
   );
 };
+
 export default Nav;
