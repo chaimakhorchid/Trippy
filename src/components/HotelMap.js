@@ -22,6 +22,7 @@ const HotelMap = (props) => {
   console.log(selectedHotel)
   
   return (
+    
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}

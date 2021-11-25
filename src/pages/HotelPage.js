@@ -4,13 +4,18 @@ import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
 import { AiFillStar,  AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useParams } from 'react-router';
-import GoogleMapReact from "google-map-react";
+
 
 const HotelTitle = styled.div `
 `
 const HotelStars = styled.div `
 display: flex;
 justify-content: flex-start;
+`
+const Map = styled.div `
+background-color: red;
+width: 100%,
+height: 100%;
 `
 
 
@@ -32,7 +37,7 @@ const HotelPage = (props) => {
     })
   }, [id])
 
- console.log(center)
+ 
 
 
   return (
@@ -122,7 +127,7 @@ const HotelPage = (props) => {
             </div>
           </div>
         </div>
-        <HotelMap/>
+        <Map/>
       </div>
    </section>
 
