@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { AiFillStar,  AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useParams } from 'react-router';
 import GoogleMapReact from "google-map-react";
-import HotelMap from '../components/HotelMap'
+import HotelMap from '../components/HotelMap';
 
 const HotelTitle = styled.div `
 `
@@ -17,7 +17,7 @@ justify-content: flex-start;
 
 const HotelPage = (props) => {
   const [favIcon, setFavIcon] = useState(false) 
-  const [ infoHotel, setInfoHotel ] = useState({})
+  const [ infoHotel, setInfoHotel ] = useState(null)
   const id = useParams()
 
 
@@ -32,6 +32,11 @@ const HotelPage = (props) => {
       // console.log(data)
     })
   }, [id])
+
+//  console.log(center)
+  if (infoHotel == null) {
+      return <p>Chargement en cours</p>
+  }
 
   return (
 
@@ -120,7 +125,10 @@ const HotelPage = (props) => {
             </div>
           </div>
         </div>
-        <HotelMap />
+        <HotelMap
+            hotels={[infoHotel]}
+            center={infoHotel.location}
+        />
       </div>
    </section>
 

@@ -60,16 +60,6 @@ const CenterPages = styled.div`
   justify-content: center;
 `
 
-const MapContainer = styled.div`
-  height: 500px;
-  width: 500px;
-
-  @media-query (min-width: 360px) {
-    height: calc(100vh - 500px);
-    width: 100%;
-  }
-`
-
 const Hotels = () => {
     const [selectedHotel, setSelectedHotel] = useState({})
     const [ hotels, setHotels ] = useState(null)
@@ -86,7 +76,9 @@ const Hotels = () => {
       setHotels(data.results)
       setCenter(data.center)
     })
-  }, [city, page])  
+  }, [city, page]) 
+
+
 
   if (!center) {
     return <p>Chargement...</p>
@@ -101,15 +93,17 @@ const Hotels = () => {
                     <p>En cours de chargement...</p>
                 ):(
                     hotels.map((hotel, index) => (
-                      <Link to={`/hotelpage/${hotel._id}`}>
-                        <HotelCard 
-                            key={index} 
-                            name={hotel.name} 
-                            price={hotel.price} 
-                            stars={hotel.stars}
-                            image={hotel.pictures}
-                        />
-                      </Link>
+                        <Link to={`/hotelpage/${hotel._id}`}>
+                            <HotelCard 
+                                key={index} 
+                                name={hotel.name} 
+                                price={hotel.price} 
+                                stars={hotel.stars}
+                                image={hotel.pictures}
+                                id={hotel._id}
+                                selectedHotel={selectedHotel}
+                            />
+                        </Link>
                     ))
                 )}
                 <CenterPages>
@@ -120,16 +114,14 @@ const Hotels = () => {
                 </CenterPages>
 
             </HotelsList>
-            <Hotels>
-              <MapContainer>
+            <HotelsMap>
                 <HotelMap 
                   center={center} 
                   hotels={hotels}
                   selectedHotel={selectedHotel}
                   setSelectedHotel={setSelectedHotel}
                 />
-              </MapContainer>
-            </Hotels>
+            </HotelsMap>
            
         </Container>
     );

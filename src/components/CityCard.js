@@ -50,7 +50,7 @@ const CityCard = (props) => {
         <div></div>
         <p>
           <Link
-            to={`/hotel/${props.slug}`}
+            to={`/hotels/${props.slug}`}
             style={{
               color: "white",
               padding: "20px",

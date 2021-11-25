@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import ArrayImg from './ArrayImg'
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
+import HotelMap from "./HotelMap";
 
 
 const CardBox = styled.div `
 margin: 0px 20px 33px 0px;
-background: #B7094C;
 border-radius: 10px;
-height: 118px;
+height: 118px; 
 display: flex;
 justify-content: flex-start;
 overflow: hidden;
@@ -49,20 +50,30 @@ const HotelStars = styled.div`
   justify-content: flex-start;
 `;
 
-const HotelCard = (props) => {
+const HotelCard = ( props ) => {
+  const selectedHotel = props.selectedHotel
   const [favIcon, setFavIcon] = useState(false);
-  const src = props.image.find((picture) => ArrayImg.includes(picture));
+  const src = props.image.find((picture) => ArrayImg.includes(picture))
+  const ref = useRef()
+
+  console.log(ref)
+
+  useEffect(() => {
+    if(props.id === selectedHotel._id) {
+      ref.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [selectedHotel, props.id])
 
   return (
     <Link
-      to={`/hotel/${props.id}`}
+      to={`/hotelpage/${props.id}`}
       style={{
         color: "white",
         textDecoration: "none",
         fontFamily: "Abel, sans-serif",
       }}
     >
-      <CardBox>
+      <CardBox ref={ref} style={{background: `${props.id === selectedHotel._id ? '#892b64' : '#B7094C' }`}}>
         <CardImage
           style={
             !src

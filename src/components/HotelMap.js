@@ -5,9 +5,13 @@ import styled from "styled-components"
 import HotelMarker from "./HotelMarker"
 
 const HotelMap = (props) => {
-  const setSelectedHotel = props.setSelectedHotel
+  const setSelectedHotel = props.setSelectedHotel 
   const hotels = props.hotels
   let center = props.center
+
+  // const {} = props
+
+  // console.log(selectedHotel)
   
   return (
       <GoogleMapReact
@@ -29,6 +33,15 @@ const HotelMap = (props) => {
         ))}
       </GoogleMapReact>
   )
+}
+
+HotelMap.defaultProps = {
+  setSelectedHotel : () => {},
+  hotels : [],
+  center : {
+    lat: 48.856614,
+    lon: 2.3522219
+  } 
 }
 
 export default HotelMap

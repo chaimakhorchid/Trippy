@@ -28,7 +28,7 @@ const HotelMarker = (props) => {
       lat={props.lat}
       lng={props.lng}
     >
-      {props.price}
+      {props.price}€
     </Marker>
 
   );
