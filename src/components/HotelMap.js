@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from 'styled-components'
-import { MapContext } from '../context/Map'
 // import HotelMarker from "./HotelMarker";
 
 const MapContainer = styled.div`
@@ -14,31 +13,30 @@ const MapContainer = styled.div`
   }
 `
 
-const Map = () => {
-  const { location } = useContext(MapContext);
+const HotelMap = (props) => {
 
-  if (!location) {
-    return <p>Chargement...</p>;
-  }
-
-  console.log(location)
+  const [selectedHotel, setSelectedHotel] = useState({})
+  const hotels = props.hotels
+  let center = props.center
 
   return (
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
-        defaultCenter={location}
+        defaultCenter={{
+          lat : center.lat,
+          lng : center.lon
+        }}
         defaultZoom={14}
       >
 
         {/* <Marker 
           lat={location.lat}
           lng={location.lng}
-          marker='my-position'
         /> */}
       </GoogleMapReact>
     </MapContainer>
   );
 };
 
-export default Map;
+export default HotelMap;

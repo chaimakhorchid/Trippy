@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar,  AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useParams } from 'react-router';
+import GoogleMapReact from "google-map-react";
 
 const HotelTitle = styled.div `
 `
@@ -10,56 +12,96 @@ const HotelStars = styled.div `
 display: flex;
 justify-content: flex-start;
 `
+const MapContainer = styled.div`
+  height: 500px;
+  width: 500px;
 
-
-const DemoCarousel = props => {
-
-const [ infoHotel, setInfoHotel ] = useState({})
-  useEffect(() => {
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-    .then(response => response.json())
-    .then(data => setInfoHotel(data))
+  @media-query(min-width: 360px) {
+    height: calc(100vh - 70px);
+    width: 50%;
   }
-  )
- console.log(infoHotel);
+`
+
+const HotelPage = (props) => {
+  const [favIcon, setFavIcon] = useState(false) 
+  const [ infoHotel, setInfoHotel ] = useState({})
+  const id = useParams()
+  let center = props.center
+  
+
+// console.log(id)
+
+  useEffect(() => {
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id.id}`)
+    .then(response => response.json())
+    .then(data => {
+      setInfoHotel(data.result)
+      // console.log(data)
+    })
+  }, [id])
+
+ console.log(center)
+
+
   return (
+
    <>
    <section>
       <div>
+        
         <HotelTitle>
           <h4>{infoHotel.name}</h4>
+          <p>{infoHotel.address}</p>
           <h2>{infoHotel.price}€</h2>
           <HotelStars>
-              {[...Array(props.stars)].map((i) => 
+              {[...Array(infoHotel.stars)].map((i) => 
                       <AiFillStar 
                           size={14}
                           color={"yellow"}
                       />
               )}
           </HotelStars>
+          <div
+                        onMouseEnter={() => {
+                            setFavIcon(true)
+                        }}
+                        onMouseLeave={() => {
+                            setFavIcon(false)
+                        }}
+                    > Favorites
+                        {!favIcon ? (
+                            <AiOutlineHeart
+                                size={24}
+                            />
+                        ) : (
+                            <AiFillHeart
+                                size={24}
+                            />
+                        )}    
+                    </div>
         </HotelTitle>
         <div>
           <div style={{ display: "flex", justifyContent:"space-around"}}>
             <div>
               <Carousel>
                   <div style={{ width: "100%", height:"100%"}}>
-                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" style={{ width: "100%"}}/>
+                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" style={{ width: "100%"}} alt="image"/>
                       <p className="legend">chambre</p>
                   </div>
                   <div style={{ width: "100%", height:"100%"}}>
-                      <img src="https://trippy-konexio.herokuapp.com//img/hotels/10541730_61.jpg" style={{ width: "100%"}}/>
+                      <img src="https://trippy-konexio.herokuapp.com//img/hotels/10541730_61.jpg" style={{ width: "100%"}} alt="image1"/>
                       <p className="legend">chambre</p>
                   </div>
                   <div style={{ width: "100%", height:"100%"}}>
-                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_31.jpg" style={{ width: "100%"}}/>
+                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_31.jpg" style={{ width: "100%"}} alt="image2"/>
                       <p className="legend">view</p>
                   </div>
                   <div style={{ width: "100%", height:"100%"}}>
-                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_19.jpg" style={{ width: "100%"}}/>
+                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_19.jpg" style={{ width: "100%"}} alt="image3"/>
                       <p className="legend">view</p>
                   </div>
                   <div style={{ width: "100%", height:"100%"}}>
-                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_2.jpg" style={{ width: "100%"}}/>
+                      <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_2.jpg" style={{ width: "100%"}} alt="image6"/>
                       <p className="legend">view</p>
                   </div>
                 </Carousel>
@@ -87,25 +129,28 @@ const [ infoHotel, setInfoHotel ] = useState({})
               </div>
             </div>
           </div>
-          <div>
-            <i>Star</i>
-            <i>Star</i>
-            <i>Star</i>
-            <i>Star</i>
-            <i>Star</i>
-          </div>
-          <i>Heart</i>
         </div>
-      </div>
+        <MapContainer>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "" }}
+        defaultCenter={{
+          lat : center.lat,
+          lng : center.lon
+        }}
+        defaultZoom={14}
+      >
 
-      <div>
-        <p>Address : hotel's address </p>
-        
+        {/* <Marker 
+          lat={location.lat}
+          lng={location.lng}
+        /> */}
+      </GoogleMapReact>
+    </MapContainer>
       </div>
    </section>
 
    </>
- )
-}
+ ) 
+} 
 
-export default DemoCarousel
+export default HotelPage

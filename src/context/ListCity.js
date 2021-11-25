@@ -3,8 +3,7 @@ import { useEffect, useState, createContext } from "react"
 const CitiesContext = createContext({})
 
 const CitiesContextProvider = props => {
-  const [ cities, setCities ] = useState(null)
-  const [ city, setCity ] = useState('')
+  const [ cities, setCities ] = useState([])
 
   useEffect(() => {
     fetch('https://trippy-konexio.herokuapp.com/api/home')
@@ -15,16 +14,9 @@ const CitiesContextProvider = props => {
     )
   }, [])
     
-
-  if(!cities){
-    return <p>Loading...</p>
+  const value = {
+    cities,
   }
-
-    const value = {
-      cities,
-      city,
-      setCity,
-    }
 
   return(
     <CitiesContext.Provider value={value}>

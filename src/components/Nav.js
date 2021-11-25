@@ -1,76 +1,66 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {GiHamburgerMenu, GiReturnArrow} from 'react-icons/gi'
-import { useState } from "react";
-
-
+import styled from "styled-components";
 
 const List = styled.ul`
-    liststyle: none
-    margin: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid white
-  `
+	liststyle: none
+	margin: 5px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	justify-content: space-between;
+	align-items: center;
+    border-bottom: 1px solid white;
+`;
 
+const Li = styled.li`
+    :hover {
+        font-weight: bold; 
+    }
+`
 const Title = styled.h1`
-font-family: 'Alegreya Sans SC', sans-serif;
+  font-family: "Alegreya Sans SC", sans-serif;
+  margin-left: 20px;
+`;
 
-`
 const Row = styled.div`
-display: flex;
-flex-direction: row;
-`
+  display: flex;
+  flex-direction: row;
+`;
 
-const menuStyle = {
+const linkStyle = {
     color: "white",
-    padding:"20px", 
-    textDecoration:"none",  
-    fontSize:"25px",
+    padding: "20px",
+    textDecoration: "none",
+    fontSize: "25px",
 }
 
-
-const Nav =() => {
-
-    const [show, setShow] = useState(false);
-    const hamburgerClick = (boolean) => {
-        console.log('hamber', boolean);
-        setShow(boolean)
-    }
-        return (
-            <>
-                    <List>
-                    <Title>TRIPPY TRAVEL</Title>
-                    {!show ?
-                    <GiHamburgerMenu onClick={() => hamburgerClick(true)} />
-                    :(
-                    <Row>
-                        <li>
-                            <Link className='nav' to="/" style={menuStyle}>HOME</Link>
-                        </li>
-                        <li>
-                            <Link className='nav' to="/hotel/:city" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>HOTELS</Link>
-                        </li>
-                        <li>
-                            <Link className='nav' to="" style={menuStyle}>FAVORITES</Link>
-                        </li>
-                        <li>
-                            <Link className='nav' to="/hotel/hotelpage" style={{color: "white",padding:"20px", textDecoration:"none",  fontSize:"25px"}}>HOTELPAGE</Link>
-                        </li>
-                    </Row>
-                    )
-}
-                    </List>
-
-            </>    
-    )
-    }
-
-
-export default Nav
-
-
+const Nav = () => {
+  return (
+    <>
+      <List>
+        <Title>Trippy Travel</Title>
+        <Row>
+          <Li>
+            <Link
+              to="/"
+              style={linkStyle}
+            >
+              HOME
+            </Link>
+          </Li>
+          <Li>
+            <Link
+              className="nav"
+              to=""
+              style={linkStyle}
+            >
+              FAVORITES
+            </Link>
+          </Li>
+        </Row>
+      </List>
+    </>
+  );
+};
+export default Nav;

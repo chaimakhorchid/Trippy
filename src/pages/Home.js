@@ -4,7 +4,7 @@ import CityCard from "../components/CityCard";
 import { CitiesContext } from '../context/ListCity'
 
 const CityContainer = styled.div`
-    height: 80vh;
+    height: 90vh;
     margin-top: 2%;
     display: flex;
     flex-wrap: wrap;
@@ -24,13 +24,17 @@ const CityContainer = styled.div`
 const Home = () => {
     const { cities } = useContext(CitiesContext)
 
-    console.log(cities)
+    console.log("city test",cities)
+
+    if (!cities) {
+        return <p>Chargement...</p>;
+    }
 
     return (
 
         <CityContainer>
             {cities.map(city => (
-                <CityCard key={city.id} source={city.source} name={city.name}/>
+                <CityCard key={city.id} source={city.source} name={city.name} slug={city.slug}/>
             )
             )}
         </CityContainer>
