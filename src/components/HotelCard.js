@@ -77,9 +77,7 @@ const HotelCard = props => {
                         </HotelStars>
                     </CardText>
                     <div 
-                        onMouseEnter={() => {
-                            setFavIcon(true)
-                        }}
+                        onMouseEnter={() => {setFavIcon(true) }}
                         onMouseLeave={() => {
                             setFavIcon(false)
                         }}

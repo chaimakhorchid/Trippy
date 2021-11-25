@@ -29,7 +29,7 @@ const Hotels = () => {
     const [ center, setCenter ] = useState(null)
     const [ page, setPage ] = useState(1)
     let { city } = useParams()
-   
+
     console.log("hotels", city)
 
   useEffect(() => {    
