@@ -91,13 +91,16 @@ const Hotels = () => {
                     <p>En cours de chargement...</p>
                 ):(
                     hotels.map((hotel, index) => (
-                        <HotelCard 
-                            key={index} 
-                            name={hotel.name} 
-                            price={hotel.price} 
-                            stars={hotel.stars}
-                            image={hotel.pictures}
-                        />
+                        <Link to={`/hotelpage/${hotel._id}`}>
+                            <HotelCard 
+                                key={index} 
+                                name={hotel.name} 
+                                price={hotel.price} 
+                                stars={hotel.stars}
+                                image={hotel.pictures}
+                                id={hotel._id}
+                            />
+                        </Link>
                     ))
                 )}
                 <CenterPages>
