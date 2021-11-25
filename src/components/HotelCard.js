@@ -67,7 +67,7 @@ const HotelCard = (props) => {
           style={
             !src
               ? {
-                  backgroundImage: `url(https://www.egamaster.com/logo-no-image/logo-no-image.png)`,
+                  backgroundImage: `url(https://media.istockphoto.com/vectors/hotel-room-summer-poster-suitcases-by-the-sea-the-beginning-of-the-vector-id1140467460?k=20&m=1140467460&s=612x612&w=0&h=TUDy8shxRenclm1fqDcvA7E9cFqzTHG9yVKpjtRRlHE=)`,
                 }
               : {
                   backgroundImage: `url(https://trippy-konexio.herokuapp.com/${src})`,

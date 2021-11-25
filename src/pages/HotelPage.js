@@ -9,71 +9,66 @@ import HotelMap from '../components/HotelMap';
 
 const HotelTitle = styled.div `
 `
+
 const HotelStars = styled.div `
 display: flex;
 justify-content: flex-start;
 `
 
-
 const HotelPage = (props) => {
+
   const [favIcon, setFavIcon] = useState(false) 
   const [ infoHotel, setInfoHotel ] = useState(null)
   const id = useParams()
 
-
-
 // console.log(id)
 
-  useEffect(() => {
+useEffect(() => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id.id}`)
     .then(response => response.json())
     .then(data => {
-      setInfoHotel(data.result)
-      // console.log(data)
+        setInfoHotel(data.result)
+        // console.log(data)
     })
-  }, [id])
+}, [id])
 
 //  console.log(center)
-  if (infoHotel == null) {
-      return <p>Chargement en cours</p>
-  }
+    if (infoHotel == null) {
+        return <p>Chargement en cours</p>
+    }
 
-  return (
+    return (
 
-   <>
-   <section>
-      <div>
+    <>
+    <section>
+        <div>
         
         <HotelTitle>
-          <h4>{infoHotel.name}</h4>
-          <p>{infoHotel.address}</p>
-          <h2>{infoHotel.price}€</h2>
-          <HotelStars>
-              {[...Array(infoHotel.stars)].map((i) => 
-                      <AiFillStar 
-                          size={14}
-                          color={"yellow"}
-                      />
-              )}
-          </HotelStars>
-          <div
-                        onMouseEnter={() => {
-                            setFavIcon(true)
-                        }}
-                        onMouseLeave={() => {
-                            setFavIcon(false)
-                        }}
-                    > Favorites
-                        {!favIcon ? (
-                            <AiOutlineHeart
-                                size={24}
-                            />
-                        ) : (
-                            <AiFillHeart
-                                size={24}
-                            />
-                        )}    
-                    </div>
+            <h4>{infoHotel.name}</h4>
+            <p>{infoHotel.address}</p>
+            <h2>{infoHotel.price}€</h2>
+            <HotelStars>
+                {[...Array(infoHotel.stars)].map((i) => 
+                        <AiFillStar 
+                            size={14}
+                            color={"yellow"}
+                        />
+                )}
+            </HotelStars>
+            <div
+                onMouseEnter={() => {
+                    setFavIcon(true)
+                }}
+                onMouseLeave={() => {
+                    setFavIcon(false)
+                }}
+                > Favorites
+                {!favIcon ? (
+                <AiOutlineHeart size={24}/>
+                ) : (
+                <AiFillHeart size={24}/>
+                )}    
+            </div>
         </HotelTitle>
         <div>
           <div style={{ display: "flex", justifyContent:"space-around"}}>
@@ -83,7 +78,7 @@ const HotelPage = (props) => {
                       <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" style={{ width: "100%"}} alt="image"/>
                       <p className="legend">chambre</p>
                   </div>
-                  <div style={{ width: "100%", height:"100%"}}>
+                  {/* <div style={{ width: "100%", height:"100%"}}>
                       <img src="https://trippy-konexio.herokuapp.com//img/hotels/10541730_61.jpg" style={{ width: "100%"}} alt="image1"/>
                       <p className="legend">chambre</p>
                   </div>
@@ -98,7 +93,7 @@ const HotelPage = (props) => {
                   <div style={{ width: "100%", height:"100%"}}>
                       <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_2.jpg" style={{ width: "100%"}} alt="image6"/>
                       <p className="legend">view</p>
-                  </div>
+                  </div> */}
                 </Carousel>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
