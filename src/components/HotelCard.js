@@ -2,18 +2,23 @@ import { useState } from "react";
 import styled from "styled-components";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-import ArrayImg from "./ArrayImg";
+import ArrayImg from './ArrayImg'
 import { Link } from "react-router-dom";
 
-const CardBox = styled.div`
-  margin: 0px 20px 20px 0px;
-  background: #b7094c;
-  border-radius: 10px;
-  height: 100px;
-  display: flex;
-  justify-content: flex-start;
-  overflow: hidden;
-`;
+
+const CardBox = styled.div `
+margin: 0px 20px 33px 0px;
+background: #B7094C;
+border-radius: 10px;
+height: 118px;
+display: flex;
+justify-content: flex-start;
+overflow: hidden;
+
+:hover {
+    background-color: #892B64;
+}
+`
 
 const CardImage = styled.div`
   background-position: left;

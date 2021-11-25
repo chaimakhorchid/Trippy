@@ -2,20 +2,20 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./components/Nav";
-import { CitiesContextProvider } from "./context/ListCity";
-import { HotelsContextProvider } from "./context/ListHotel";
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
 import NotFound from "./pages/NotFound";
 import { HotelContextProvider } from "./context/Hotel";
+import { CitiesContextProvider } from "./context/ListCity";
+
 
 const Body = styled.div`
   background-color: #3f3260;
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
   height: 100vh;
-  overflow: hidden;
+  width: 100%;
 `;
 
 const App = () => {

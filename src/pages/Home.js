@@ -4,24 +4,30 @@ import CityCard from "../components/CityCard";
 import { CitiesContext } from "../context/ListCity";
 
 const CityContainer = styled.div`
-  height: 80vh;
-  margin-top: 2%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-family: "Abel", sans-serif;
-`;
+    height: 90vh;
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Abel', sans-serif;   
+` 
 
 const Home = () => {
-  const { cities } = useContext(CitiesContext);
+    const { cities } = useContext(CitiesContext)
+
+    console.log("city test",cities)
+
+    if (!cities) {
+        return <p>Chargement...</p>;
+    }
 
   console.log(cities);
 
   return (
     <CityContainer>
-      {cities.map((city) => (
+      {cities.map((city, index) => (
         <CityCard
-          key={city.id}
+          key={index}
           source={city.source}
           name={city.name}
           slug={city.slug}

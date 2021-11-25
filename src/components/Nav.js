@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const List = styled.ul`
 	liststyle: none
-	margin: 10px;
+	margin: 5px;
 	padding: 10px;
 	display: flex;
 	flex-direction: row;
@@ -14,42 +14,59 @@ const List = styled.ul`
   border-bottom: 1px solid white;
 `;
 
+const Li = styled.li`
+    :hover {
+        font-weight: bold; 
+    }
+`
 const Title = styled.h1`
   font-family: "Alegreya Sans SC", sans-serif;
+  margin-left: 20px;
 `;
+
 const Row = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
-const menuStyle = {
-  color: "white",
-  padding: "20px",
-  textDecoration: "none",
-  fontSize: "25px",
-};
+const linkStyle = {
+    color: "white",
+    padding: "20px",
+    textDecoration: "none",
+    fontSize: "25px",
+}
 
 const Nav = () => {
   return (
     <>
-      <List className="nav">
-        <Title>TRIPPY TRAVEL</Title>
+      <List>
+        <Title>Trippy Travel</Title>
         <Row>
-          <li>
-            <Link className="nav" to="/" style={menuStyle}>
+          <Li>
+            <Link
+              to="/"
+              style={linkStyle}
+            >
               HOME
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav" to="/hotel/" style={menuStyle}>
+          </Li>
+          <Li>
+            <Link
+              to="/hotel/:city"
+              style={linkStyle}
+            >
               HOTELS
             </Link>
-          </li>
-          <li>
-            <Link className="nav" to="" style={menuStyle}>
+          </Li>
+          <Li>
+            <Link
+              className="nav"
+              to=""
+              style={linkStyle}
+            >
               FAVORITES
             </Link>
-          </li>
+          </Li>
         </Row>
       </List>
     </>
