@@ -60,6 +60,16 @@ const CenterPages = styled.div`
   justify-content: center;
 `
 
+const MapContainer = styled.div`
+  height: 500px;
+  width: 500px;
+
+  @media-query (min-width: 360px) {
+    height: calc(100vh - 500px);
+    width: 100%;
+  }
+`
+
 const Hotels = () => {
     const [selectedHotel, setSelectedHotel] = useState({})
     const [ hotels, setHotels ] = useState(null)
@@ -91,6 +101,7 @@ const Hotels = () => {
                     <p>En cours de chargement...</p>
                 ):(
                     hotels.map((hotel, index) => (
+                      <Link to={`/hotelpage/${hotel._id}`}>
                         <HotelCard 
                             key={index} 
                             name={hotel.name} 
@@ -98,6 +109,7 @@ const Hotels = () => {
                             stars={hotel.stars}
                             image={hotel.pictures}
                         />
+                      </Link>
                     ))
                 )}
                 <CenterPages>
@@ -108,14 +120,16 @@ const Hotels = () => {
                 </CenterPages>
 
             </HotelsList>
-            <HotelsMap>
+            <Hotels>
+              <MapContainer>
                 <HotelMap 
                   center={center} 
                   hotels={hotels}
                   selectedHotel={selectedHotel}
                   setSelectedHotel={setSelectedHotel}
                 />
-            </HotelsMap>
+              </MapContainer>
+            </Hotels>
            
         </Container>
     );

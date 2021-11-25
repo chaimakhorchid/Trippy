@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { AiFillStar,  AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useParams } from 'react-router';
 import GoogleMapReact from "google-map-react";
+import HotelMap from '../components/HotelMap'
 
 const HotelTitle = styled.div `
 `
@@ -31,9 +32,6 @@ const HotelPage = (props) => {
       // console.log(data)
     })
   }, [id])
-
- console.log(center)
-
 
   return (
 
@@ -122,7 +120,7 @@ const HotelPage = (props) => {
             </div>
           </div>
         </div>
-        <HotelMap/>
+        <HotelMap />
       </div>
    </section>
 
