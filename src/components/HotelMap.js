@@ -5,8 +5,8 @@ import styled from "styled-components"
 import HotelMarker from "./HotelMarker"
 
 const MapContainer = styled.div`
-  height: calc(100vh - 125px);
-  width: 730px;
+  height: 500px;
+  width: 500px;
 
   @media-query (min-width: 360px) {
     height: calc(100vh - 500px);

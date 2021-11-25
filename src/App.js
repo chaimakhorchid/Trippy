@@ -29,8 +29,8 @@ const App = () => {
             </div>
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route path="/hotel/:city" element={<Hotels />} />
-              <Route path="/hotel/:id" element={<HotelPage />} />
+              <Route exact path="/hotel/:city" element={<Hotels />} />
+              <Route path="/hotelpage/:id" element={<HotelPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </HotelContextProvider>

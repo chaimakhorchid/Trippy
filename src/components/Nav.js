@@ -52,14 +52,6 @@ const Nav = () => {
           </Li>
           <Li>
             <Link
-              to="/hotel/:city"
-              style={linkStyle}
-            >
-              HOTELS
-            </Link>
-          </Li>
-          <Li>
-            <Link
               className="nav"
               to=""
               style={linkStyle}

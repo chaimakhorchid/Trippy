@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import styled from 'styled-components'
 import HotelCard from '../components/HotelCard'
 import HotelMap from '../components/HotelMap'
+import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -65,8 +66,8 @@ const Hotels = () => {
     const [ center, setCenter ] = useState(null)
     const [ page, setPage ] = useState(1)
     let { city } = useParams()
-
-    console.log("hotels", city)
+   
+    // console.log("hotels", city)
 
   useEffect(() => {    
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
@@ -81,7 +82,7 @@ const Hotels = () => {
     return <p>Chargement...</p>
   }
 
-    console.log("city:", city)
+    // console.log("city:", city)
 
     return (
         <Container>
