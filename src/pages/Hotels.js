@@ -118,6 +118,7 @@ const Hotels = () => {
             </HotelsList>
             <HotelsMap>
                 <HotelMap 
+                  map="list"
                   center={center} 
                   hotels={hotels}
                   selectedHotel={selectedHotel}

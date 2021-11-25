@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const Marker = styled.div`
-  width: 35px;
   height: 20px;
   background: #b7094c;
   display: flex;
@@ -22,13 +21,14 @@ const HotelMarker = (props) => {
         props.setSelectedHotel({});
       }}
       style={{
-        width: "30px",
-        height: "30px",
+        width: `${props.map === 'list'? '40px' : '120px' }`,
+        height: `${props.map === 'list'? '25px' : '70px' }`,
+        padding: '5px',
       }}
       lat={props.lat}
       lng={props.lng}
     >
-      {props.price}€
+      {props.children}
     </Marker>
 
   );

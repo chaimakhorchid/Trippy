@@ -17,6 +17,12 @@ display: flex;
 justify-content: flex-start;
 `
 
+const MapContainer = styled.div`
+ width: 730px;
+ height: 650px;
+ margin: 30px;
+`
+
 const HotelPage = (props) => {
 
   const [favIcon, setFavIcon] = useState(false) 
@@ -124,10 +130,13 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <HotelMap
-            hotels={[infoHotel]}
-            center={infoHotel.location}
-        />
+        <MapContainer>
+            <HotelMap
+                map="page-hotel"
+                hotels={[infoHotel]}
+                center={infoHotel.location}
+            />
+        </MapContainer>
       </div>
    </section>
 
