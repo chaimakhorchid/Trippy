@@ -73,7 +73,17 @@ const HotelCard = ( props ) => {
         fontFamily: "Abel, sans-serif",
       }}
     >
-      <CardBox ref={ref} style={{background: `${props.id === selectedHotel._id ? '#892b64' : '#B7094C' }`}}>
+      <CardBox 
+        ref={ref} 
+        style={{
+          background:  
+            `${props.id === selectedHotel._id ? 
+              '#892b64' 
+              : 
+              '#B7094C' 
+            }`
+          }}
+      >
         <CardImage
           style={
             !src
