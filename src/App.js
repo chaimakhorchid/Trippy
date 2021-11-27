@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
+import Favorites from './pages/Favorites'
 import NotFound from "./pages/NotFound";
 import { HotelContextProvider } from "./context/Hotel";
 import { CitiesContextProvider } from "./context/ListCity";
@@ -31,6 +32,7 @@ const App = () => {
               <Route exact path="/" element={<Home />} />
               <Route exact path="/hotels/:city" element={<Hotels />} />
               <Route exact path="/hotelpage/:id" element={<HotelPage />} />
+              <Route path="/favorites" element={<Favorites />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </HotelContextProvider>

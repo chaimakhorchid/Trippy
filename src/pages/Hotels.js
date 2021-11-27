@@ -78,6 +78,17 @@ const Hotels = () => {
     })
   }, [city, page]) 
 
+  function handleCardClick(id) {
+    const favorites = localStorage.getItem("favorites")
+    
+    if (!favorites) {
+      localStorage.setItem("favorites", JSON.stringify([id]))
+    } else {
+      let array = JSON.parse(favorites)
+      array = [...array, id]
+      localStorage.setItem("favorites", JSON.stringify(array))
+    }
+  }
 
 
   if (!center) {
@@ -104,6 +115,7 @@ const Hotels = () => {
                                 image={hotel.pictures}
                                 id={hotel._id}
                                 selectedHotel={selectedHotel}
+                                handleCardClick={() => handleCardClick(hotel._id)}
                             />
                         </Link>
                     ))
