@@ -6,27 +6,129 @@ import GoogleMapReact from "google-map-react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { AiFillStar,  AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { FaBath } from 'react-icons/fa'
 import HotelMap from '../components/HotelMap';
-import ArrayImg from '../components/ArrayImg'
+import Icon from '../components/Icon';
+import Carrousels from '../components/Carousel'
 
 const HotelTitle = styled.div `
+font-size: 20px;
+margin : 40px;
+
+h2 {
+    text-align: end;
+}
+`
+const Favorites = styled.div`
+margin-left: 610px;
+position:absolute;
+top: 29%;
 `
 
 const HotelStars = styled.div `
 display: flex;
 justify-content: flex-start;
+
+`
+const MapContainer = styled.div `
+width: 730px;
+height: 650px;
+margin: 30px;
+  `
+  
+const Card = styled.div `
+margin: 30px 20px 33px 30px;
+background: #B7094C;
+border-radius: 10px;
+height: 100px;
+display: flow-root
+justify-content: flex-start;
+overflow: hidden;
+width: 500px;
+text-align: left;
+padding: 30px 10px 0px 40px;
+position:absolute;
+top: 140%;
+right: 6%;
+
+
+:hover {
+    background-color: #892B64;
+}
 `
 
-const MapContainer = styled.div`
- width: 730px;
- height: 650px;
- margin: 30px;
+const Commodities = styled.div`
+margin: 30px 20px 33px 30px;
+background: #B7094C;
+border-radius: 10px;
+height: fit-content;
+display: flex;
+flex-wrap: wrap;
+overflow: hidden;
+width: 460px;
+position:   absolute;
+top : 180%;
+right: 6%;
+padding: 30px 40px 10px 40px;
+
+
+:hover {
+    background-color: #892B64;
+}
+`
+const CardBox = styled.div`
+background: #B7094C;
+border-radius: 10px;
+height: 118px;
+width: 250px;
+margin: 10px;
+text-align: center;
+
+:hover {
+    background-color: #892B64;
+}
+`
+
+
+const Comm = styled.div`
+display: flex;
+margin: 10px;
+width: 200px;
+flex-direction: row;
+align-items: center;
+
+
+`
+
+const IconAlign = styled.div`
+    
+`
+
+const IconItem = styled.div`
+    margin-left: -20px;
+    
+`
+const BigCard = styled.div`
+  margin: 40px;
+  height: calc(100vh - 120px);
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #b7094c;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+  }
 `
 
 const HotelPage = (props) => {
 
   const [favIcon, setFavIcon] = useState(false) 
   const [ infoHotel, setInfoHotel ] = useState(null)
+  const [ listRoom, setListRoom ] = useState (null)
   const id = useParams()
 //   const src = .find((picture) => ArrayImg.includes(picture));
 
@@ -41,8 +143,18 @@ useEffect(() => {
     })
 }, [id])
 
+useEffect(() =>{
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id.id}/rooms`)
+    .then(response => response.json())
+    .then (data => { 
+        setListRoom(data)
+        console.log(data)
+
+    })
+}, [id])
+
 //  console.log(center)
-    if (infoHotel == null) {
+    if (infoHotel == null || listRoom == null) {
         return <p>Chargement en cours</p>
     }
 
@@ -58,12 +170,12 @@ useEffect(() => {
             <HotelStars>
                 {[...Array(infoHotel.stars)].map((i) => 
                         <AiFillStar 
-                            size={14}
+                            size={20}
                             color={"yellow"}
                         />
                 )}
             </HotelStars>
-            <div
+            <Favorites
                 onMouseEnter={() => {
                     setFavIcon(true)
                 }}
@@ -72,71 +184,55 @@ useEffect(() => {
                 }}
                 > Favorites
                 {!favIcon ? (
-                <AiOutlineHeart size={24}/>
+                <AiOutlineHeart size={20}/>
                 ) : (
-                <AiFillHeart size={24}/>
+                <AiFillHeart size={20}/>
                 )}    
-            </div>
+            </Favorites>
         </HotelTitle>
-        <div>
-            <div style={{ display: "flex", justifyContent:"space-around"}}>
-                <div>
-                    <Carousel>
-                        {/* {ArrayImg.map((picture) => (
-                            <div style={{ width: "100%", height:"100%", }}>
-                                <img src={`https://trippy-konexio.herokuapp.com/${picture}`} style={{ height: "100%" }} alt="image"/>
-                                <p className="legend">chambre</p>
-                            </div>
-                        ))} */}
-                        <div style={{ width: "100%", height:"100%"}}>
-                            <img src="https://trippy-konexio.herokuapp.com//img/hotels/10541730_61.jpg" style={{ height: "100%"}} alt="image1"/>
-                            <p className="legend">chambre</p>
-                        </div>
-                        <div style={{ width: "100%", height:"100%"}}>
-                            <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_31.jpg" style={{ height: "100%"}} alt="image2"/>
-                            <p className="legend">view</p>
-                        </div>
-                        <div style={{ width: "100%", height:"100%"}}>
-                            <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_19.jpg" style={{ height: "100%"}} alt="image3"/>
-                            <p className="legend">view</p>
-                        </div>
-                        <div style={{ width: "100%", height:"100%"}}>
-                            <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_2.jpg" style={{ height: "100%"}} alt="image6"/>
-                            <p className="legend">view</p>
-                        </div>
-                </Carousel>
-            </div>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
-              <div style={{ width: "45%"}}>
-                  <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" style={{ width: "100%", height: "80%"}}/>
-                  <p className="legend">chambre</p>
-              </div>
-              <div style={{ width: "45%"}}>
-                  <img src="https://trippy-konexio.herokuapp.com//img/hotels/10541730_61.jpg" style={{ width: "100%", height: "80%"}}/>
-                  <p className="legend">salle de bain</p>
-              </div>
-              <div style={{ width: "45%"}}>
-                  <img src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_31.jpg" style={{ width: "100%", height: "80%"}}/>
-                  <p className="legend">view</p>
-              </div>
-              <div style={{ width: "45%"}}>
-                  <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_19.jpg" style={{ width: "100%", height: "80%"}}/>
-                  <p className="legend">view</p>
-              </div>
-              <div style={{ width: "45%"}}>
-                  <img src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_2.jpg" style={{ width: "100%", height: "80%"}}/>
-                  <p className="legend">view</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Carrousels/>
         <MapContainer>
-            <HotelMap
-                map="page-hotel"
-                hotels={[infoHotel]}
-                center={infoHotel.location}
-            />
-        </MapContainer>
+        <HotelMap
+        map="page-hotel"
+        hotels={[infoHotel]}
+        center={infoHotel.location}
+         />
+          <Card>
+              <h2>Informations :</h2>
+          <p>Tel : {infoHotel.phone} <br/>
+            Email : {infoHotel.email} <br/>
+            Website : {infoHotel.website}
+          </p> 
+        </Card>
+        <Commodities> 
+            <h2>Commodities :</h2>
+        {infoHotel.commodities.filter(function(ele , pos){
+            return infoHotel.commodities.indexOf(ele) == pos;
+        }).map((commoditie) => (
+         <Comm>
+            <IconAlign>
+                <Icon comodity={commoditie}></Icon>
+            </IconAlign>
+            <IconItem>
+                <p>{commoditie}</p>
+            </IconItem>
+        </Comm>
+))} 
+    </Commodities>
+        </MapContainer> 
+    
+    <BigCard style={{ display: "flex", justifyContent:"space-around"}}>
+        {listRoom.results.map(room =>
+            <div style={{ width: "100%", height:"545px"}}>
+                <CardBox>
+                    <h4>Room</h4>
+                    <p>People: {room.people}</p>
+                    <p>{room.price}€</p>
+                    {room.isBathroom ? <FaBath/> : <></>}
+                </CardBox>    
+            </div>      
+        )}
+        </BigCard>
       </div>
    </section>
 

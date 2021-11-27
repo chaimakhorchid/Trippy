@@ -15,7 +15,6 @@ const Body = styled.div`
   background-color: #3f3260;
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
-  height: 110vh;
   width: 100%;
 `;
 
