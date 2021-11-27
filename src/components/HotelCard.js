@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import ArrayImg from './ArrayImg'
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
+import HotelMap from "./HotelMap";
 
 
 const CardBox = styled.div `
 margin: 0px 20px 33px 0px;
-background: #B7094C;
 border-radius: 10px;
-height: 118px;
+height: 118px; 
 display: flex;
 justify-content: flex-start;
 overflow: hidden;
@@ -49,9 +50,19 @@ const HotelStars = styled.div`
   justify-content: flex-start;
 `;
 
-const HotelCard = (props) => {
+const HotelCard = ( props ) => {
+  const selectedHotel = props.selectedHotel
   const [favIcon, setFavIcon] = useState(false);
-  const src = props.image.find((picture) => ArrayImg.includes(picture));
+  const src = props.image.find((picture) => ArrayImg.includes(picture))
+  const ref = useRef()
+
+  console.log(ref)
+
+  useEffect(() => {
+    if(props.id === selectedHotel._id) {
+      ref.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [selectedHotel, props.id])
 
   return (
     <Link
@@ -62,12 +73,12 @@ const HotelCard = (props) => {
         fontFamily: "Abel, sans-serif",
       }}
     >
-      <CardBox>
+      <CardBox ref={ref} style={{background: `${props.id === selectedHotel._id ? '#892b64' : '#B7094C' }`}}>
         <CardImage
           style={
             !src
               ? {
-                  backgroundImage: `url(https://www.egamaster.com/logo-no-image/logo-no-image.png)`,
+                  backgroundImage: `url(https://media.istockphoto.com/vectors/hotel-room-summer-poster-suitcases-by-the-sea-the-beginning-of-the-vector-id1140467460?k=20&m=1140467460&s=612x612&w=0&h=TUDy8shxRenclm1fqDcvA7E9cFqzTHG9yVKpjtRRlHE=)`,
                 }
               : {
                   backgroundImage: `url(https://trippy-konexio.herokuapp.com/${src})`,

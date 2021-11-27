@@ -76,7 +76,9 @@ const Hotels = () => {
       setHotels(data.results)
       setCenter(data.center)
     })
-  }, [city, page])  
+  }, [city, page]) 
+
+
 
   if (!center) {
     return <p>Chargement...</p>
@@ -91,7 +93,9 @@ const Hotels = () => {
                     <p>En cours de chargement...</p>
                 ):(
                     hotels.map((hotel, index) => (
-                        <Link to={`/hotelpage/${hotel._id}`}>
+                        <Link 
+                            to={`/hotelpage/${hotel._id}`} 
+                            style={{ textDecoration: "none" }}>
                             <HotelCard 
                                 key={index} 
                                 name={hotel.name} 
@@ -99,6 +103,7 @@ const Hotels = () => {
                                 stars={hotel.stars}
                                 image={hotel.pictures}
                                 id={hotel._id}
+                                selectedHotel={selectedHotel}
                             />
                         </Link>
                     ))
@@ -113,6 +118,7 @@ const Hotels = () => {
             </HotelsList>
             <HotelsMap>
                 <HotelMap 
+                  map="list"
                   center={center} 
                   hotels={hotels}
                   selectedHotel={selectedHotel}

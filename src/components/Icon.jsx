@@ -7,13 +7,17 @@ import {GiCroissant, GiComputerFan, GiWashingMachine} from 'react-icons/gi';
 import {RiFridgeFill} from 'react-icons/ri';
 import {BiBed} from 'react-icons/bi';
 
+
+
+const Icons = styled.div`
+column-count: 2;
+
+`
+
+
 function Icon (props) {
-
-
-
-
     return (
-      <>
+      <Icons>
         {props.comodity === "wifi" && <AiOutlineWifi/>}
         {props.comodity === "swimming pool" && <FaSwimmingPool/>}
         {props.comodity === "room service" && <MdRoomService/>}
@@ -32,7 +36,7 @@ function Icon (props) {
         {props.comodity === "family" &&  <MdFamilyRestroom/>}
         {props.comodity === "animals" &&  <FaDog/>}
         {props.comodity === "shuttle" &&  <FaShuttleVan/>}
-      </>
+      </Icons>
     )
 }
 
