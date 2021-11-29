@@ -98,7 +98,7 @@ const HotelCard = (props) => {
             <h4>{props.name}</h4>
             <h2>{props.price}€</h2>
             <HotelStars>
-              {[...Array(props.stars)].map((i) => (
+              {[...Array(Math.floor(props.stars))].map((i) => (
                 <AiFillStar size={14} color={"yellow"} />
               ))}
             </HotelStars>
