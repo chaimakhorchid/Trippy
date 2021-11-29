@@ -5,9 +5,11 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import HotelPage from "./pages/HotelPage";
 import Hotels from "./pages/Hotels";
+import Favorites from './pages/Favorites'
 import NotFound from "./pages/NotFound";
 import { HotelContextProvider } from "./context/Hotel";
 import { CitiesContextProvider } from "./context/ListCity";
+import { FavoritesContextProvider } from "./context/Favorites";
 
 
 const Body = styled.div`
@@ -15,6 +17,14 @@ const Body = styled.div`
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
   width: 100%;
+
+  @media (max-width: 376px) {
+    height 140vh;
+
+
+  }
+
+
 `;
 
 const App = () => {
@@ -22,17 +32,20 @@ const App = () => {
     <Body>
       <BrowserRouter>
         <CitiesContextProvider>
-          <HotelContextProvider>
-            <div>
-              <Nav />
-            </div>
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/hotels/:city" element={<Hotels />} />
-              <Route exact path="/hotelpage/:id" element={<HotelPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </HotelContextProvider>
+          <FavoritesContextProvider>
+            <HotelContextProvider>
+              <div>
+                <Nav />
+              </div>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/hotels/:city" element={<Hotels />} />
+                <Route exact path="/hotelpage/:id" element={<HotelPage />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </HotelContextProvider>
+          </FavoritesContextProvider>
         </CitiesContextProvider>
       </BrowserRouter>
     </Body>

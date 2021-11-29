@@ -53,7 +53,7 @@ const Nav = () => {
           <Li>
             <Link
               className="nav"
-              to=""
+              to="/favorites"
               style={linkStyle}
             >
               FAVORITES
