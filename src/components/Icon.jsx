@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {FaSwimmingPool, FaCocktail, FaSpa, FaWheelchair, FaSuitcase, FaDog, FaShuttleVan } from 'react-icons/fa';
+import {FaSwimmingPool, FaCocktail, FaSpa, FaWheelchair, FaLuggageCart, FaDog, FaShuttleVan } from 'react-icons/fa';
 import {MdRoomService, MdOutlineSmokeFree, MdOutlineLanguage,MdFamilyRestroom} from 'react-icons/md';
 import {AiOutlineWifi} from 'react-icons/ai';
 import {CgGym} from 'react-icons/cg';
@@ -25,7 +25,7 @@ function Icon (props) {
         {props.comodity === "spa" && <FaSpa/>}
         {props.comodity === "gym" && <CgGym/>}
         {props.comodity === "disabled access" && <FaWheelchair/>}
-        {props.comodity === "conciergerie" && <FaSuitcase/>}
+        {props.comodity === "conciergerie" && <FaLuggageCart/>}
         {props.comodity === "non smoking" && <MdOutlineSmokeFree/>}
         {props.comodity === "dry cleaning" && <GiWashingMachine/>}
         {props.comodity === "multilingual staff" && <MdOutlineLanguage/>}
