@@ -20,9 +20,7 @@ const Body = styled.div`
   height: 100%;
 
   @media (max-width: 376px) {
-    height 140vh;
-
-
+    height 100vh;
   }
 
 

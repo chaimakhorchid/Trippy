@@ -16,8 +16,7 @@ const FavoritesContextProvider = props => {
       array = [...array, id];
       localStorage.setItem("favorites", JSON.stringify(array));
       setFavorites(JSON.stringify(array))
-    }
-    
+    } 
   }
 
   function isFavorite(id) {
@@ -35,9 +34,7 @@ const FavoritesContextProvider = props => {
 
   function handleUnfavoriteCardClick(id) {
     const favorites = localStorage.getItem("favorites");
-
     let array = JSON.parse(favorites);
-
     const index = array.findIndex(element => {
       return element === id
     })

@@ -8,10 +8,6 @@ const HotelMap = (props) => {
   const setSelectedHotel = props.setSelectedHotel 
   const hotels = props.hotels
   let center = props.center
-
-  // const {} = props
-
-  // console.log(selectedHotel)
   
   return (
       <GoogleMapReact

@@ -26,17 +26,16 @@ const HotelTitle = styled.div`
     text-align: end;
   }
   @media (max-width: 376px) {
-    margin: 0px 20px;
+    margin: 10px 20px;
     font-size: 30px;
   }
 `;
 const Favorites = styled.div`
-  margin-left: 610px;
-  position: absolute;
-  top: 29%;
+  margin-left: 500px;
 
   @media (max-width: 376px) {
-    position: static;
+    margin: 0px;
+    text-align: right;
   }
 `;
 
@@ -45,7 +44,7 @@ const HotelStars = styled.div`
   justify-content: flex-start;
 `;
 
-const MapContainer = styled.div`
+const InfoContainer = styled.div`
   width: calc(100% - 50px);
   height: 650px;
   margin: 30px;
@@ -53,12 +52,23 @@ const MapContainer = styled.div`
   flex-direction: row;
 
   @media (max-width: 376px) {
-    width: 100%;
-    height: 300px;
+    width: calc(100% - 55px);
+    height: 750px;
     margin-bottom: 20px;
     flex-direction: column;
   }
-`;
+`
+
+const MapContainer = styled.div`
+  width: calc(100% - 50px);
+  height: 650px; 
+  
+  @media (max-width: 376px) {
+    width: 100%;
+    height: 900px;
+    order: 1;
+  }
+`
 
 const Card = styled.div`
   margin: 0px 20px 33px 30px;
@@ -75,11 +85,11 @@ const Card = styled.div`
   @media (max-width: 376px) {
     background: #3f3260;
     order: -2;
-    position: static;
+    position: none;
     margin: 0px;
-    padding: 5px;
+    padding: 20px 0;
     width: 100%;
-    height: 300px;
+    height: fit-content;
     font-size: 20px;
     border-radius: 0px;
     border-top: 2px solid white;
@@ -98,17 +108,19 @@ const Commodities = styled.div`
   padding: 30px 40px 10px 40px;
 
   @media (max-width: 376px) {
-    position: static;
+    margin: 10px 0;
+    background: #3f3260;
+    padding: 0;
+
   }
 `;
 const Slider = styled.div`
-  width: 50%;
-  margin:  auto;
-  text-align: center;
-
-  @media (max-width: 376px) {
+text-align: center;
+margin: 0 auto;
+width: 50%;
+@media (max-width: 376px) {
     order: -3;
-
+}
 `;
 const CardBox = styled.div`
   background: #b7094c;
@@ -121,6 +133,10 @@ const CardBox = styled.div`
   :hover {
     background-color: #892b64;
   }
+  @media (max-width: 376px) {
+    width: 170px;
+    height: 98px;
+  }
 `;
 
 const Comm = styled.div`
@@ -129,6 +145,11 @@ const Comm = styled.div`
   width: 200px;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 376px) {
+    margin: 10px 0;
+    width: 100%;
+  }
 `;
 
 const IconAlign = styled.div``;
@@ -137,9 +158,11 @@ const IconItem = styled.div`
   margin-left: -20px;
 `;
 const BigCard = styled.div`
+  display: flex;
+  justifyContent: space-around;
   overflow-x: scroll;
   ::-webkit-scrollbar {
-    width: 10px;
+    height: 10px;
   }
   ::-webkit-scrollbar-thumb {
     background: #b7094c;
@@ -150,12 +173,31 @@ const BigCard = styled.div`
   }
 `;
 
-const Info = styled.div``;
+const BoxCard = styled.div`
+  width: 100%;
+  height: 150px;
+
+  @media (max-width: 376px) {
+    height: 120px;
+  }
+`
+
+const Line = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 376px) {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+`
 
 const ListCommodities = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+  
 `;
 
 const HotelPage = () => {
@@ -198,40 +240,44 @@ const HotelPage = () => {
           <HotelTitle>
             <h4>{infoHotel.name}</h4>
             <p>{infoHotel.address}</p>
-            <h2>{infoHotel.price}€</h2>
-            <HotelStars>
-              {[...Array(infoHotel.stars)].map((i) => (
-                <AiFillStar size={20} color={"yellow"} />
-              ))}
-            </HotelStars>
-            {!isFavorite(infoHotel._id) ? (
-              <Favorites onClick={() => handleFavoriteCardClick(infoHotel._id)}>
-                <AiOutlineHeart size={24} />
-              </Favorites>
-            ) : (
-              <Favorites
+            <Line>
+              <HotelStars>
+                {[...Array(infoHotel.stars)].map((i) => (
+                  <AiFillStar size={20} color={"yellow"} />
+                  ))}
+              </HotelStars>
+              {!isFavorite(infoHotel._id) ? (
+                <Favorites onClick={() => handleFavoriteCardClick(infoHotel._id)}>
+                  <AiOutlineHeart size={24} />
+                </Favorites>
+              ) : (
+                <Favorites
                 onClick={() => handleUnfavoriteCardClick(infoHotel._id)}
-              >
-                <AiFillHeart size={24} />
-              </Favorites>
-            )}
+                >
+                  <AiFillHeart size={24} />
+                </Favorites>
+              )}
+              <h2>{infoHotel.price}€</h2>
+            </Line>
           </HotelTitle>
           <Slider>
             <Carrousels image={infoHotel.pictures} />
           </Slider>
-          <MapContainer>
-            <HotelMap
-              map="page-hotel"
-              hotels={[infoHotel]}
-              center={infoHotel.location}
-            />
-            <Info>
+          <InfoContainer>
+            <MapContainer>
+              <HotelMap
+                map="page-hotel"
+                hotels={[infoHotel]}
+                center={infoHotel.location}
+              />
+            </MapContainer>
+            <div>
               <Card>
                 <h2>Informations :</h2>
                 <p>
-                  Tel : {infoHotel.phone} <br />
-                  Email : {infoHotel.email} <br />
-                  Website :{" "}
+                  <strong>Tel</strong> : {infoHotel.phone} <br />
+                  <strong>Email</strong> : {infoHotel.email} <br />
+                  <strong>Website</strong> :{" "}
                   <a href={infoHotel.website} style={{ color: "white" }}>
                     {infoHotel.website}
                   </a>
@@ -256,23 +302,19 @@ const HotelPage = () => {
                     ))}
                 </ListCommodities>
               </Commodities>
-            </Info>
-          </MapContainer>
+            </div>
+          </InfoContainer>
 
-          <BigCard style={{ display: "flex", justifyContent: "space-around" }}>
+          <BigCard>
             {listRoom.results.map((room) => (
-              <div style={{ width: "100%", height: "150px" }}>
+              <BoxCard>
                 <CardBox>
-                  <h4 style={{ margin: "2px" }}>Room</h4>
-                  <p style={{ margin: "2px" }}>People: {room.people}</p>
-                  <p style={{ margin: "2px" }}>{room.price}€</p>
-                  {room.isBathroom ? (
-                    <FaBath style={{ margin: "2px" }} />
-                  ) : (
-                    <></>
-                  )}
+                  <h4>Room</h4>
+                  <p>People: {room.people}</p>
+                  <p>{room.price}€</p>
+                  {room.isBathroom ? <FaBath /> : <></>}
                 </CardBox>
-              </div>
+              </BoxCard>
             ))}
           </BigCard>
         </Container>
