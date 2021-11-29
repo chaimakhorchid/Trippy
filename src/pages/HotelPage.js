@@ -111,7 +111,7 @@ const Commodities = styled.div`
     margin: 10px 0;
     background: #3f3260;
     padding: 0;
-
+    width: 100%;
   }
 `;
 const Slider = styled.div`
@@ -148,7 +148,6 @@ const Comm = styled.div`
 
   @media (max-width: 376px) {
     margin: 10px 0;
-    width: 100%;
   }
 `;
 
