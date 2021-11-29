@@ -14,7 +14,7 @@ const Button = styled.button`
     margin-right: 30px;
     font-size: 40px;
     color: white;
-    cursor: pointer;   
+    cursor: pointer;
   }
 `
 
