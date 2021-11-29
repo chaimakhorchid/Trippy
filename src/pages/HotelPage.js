@@ -119,10 +119,12 @@ const Commodities = styled.div`
 
 `
 const Slider = styled.div `
-width: 600px;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+
 @media (max-width: 376px) {
     order: -3;
-
 `
 const CardBox = styled.div`
   background: #b7094c;
