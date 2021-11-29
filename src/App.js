@@ -16,6 +16,17 @@ const Body = styled.div`
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
   width: 100%;
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #b7094c;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+  }
 `;
 
 const App = () => {
@@ -23,18 +34,18 @@ const App = () => {
     <Body>
       <BrowserRouter>
         <CitiesContextProvider>
-          <HotelContextProvider>
-            <div>
-              <Nav />
-            </div>
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/hotels/:city" element={<Hotels />} />
-              <Route exact path="/hotelpage/:id" element={<HotelPage />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </HotelContextProvider>
+            <HotelContextProvider>
+              <div>
+                <Nav />
+              </div>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/hotels/:city" element={<Hotels />} />
+                <Route exact path="/hotelpage/:id" element={<HotelPage />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </HotelContextProvider>
         </CitiesContextProvider>
       </BrowserRouter>
     </Body>

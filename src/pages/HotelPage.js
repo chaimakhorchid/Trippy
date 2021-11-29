@@ -1,42 +1,41 @@
-import { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { useParams } from 'react-router';
+import { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import { useParams } from "react-router";
 import GoogleMapReact from "google-map-react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-import { AiFillStar,  AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { FaBath } from 'react-icons/fa'
-import HotelMap from '../components/HotelMap';
-import Icon from '../components/Icon';
-import Carrousels from '../components/Carousel'
+import { Carousel } from "react-responsive-carousel";
+import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { FaBath } from "react-icons/fa";
+import HotelMap from "../components/HotelMap";
+import Icon from "../components/Icon";
+import Carrousels from "../components/Carousel";
 
-const HotelTitle = styled.div `
-font-size: 20px;
-margin : 40px;
+const HotelTitle = styled.div`
+  font-size: 20px;
+  margin: 40px;
 
-h2 {
+  h2 {
     text-align: end;
-}
-`
+  }
+`;
 const Favorites = styled.div`
-margin-left: 610px;
-position:absolute;
-top: 29%;
-`
+  margin-left: 610px;
+  position: absolute;
+  top: 29%;
+`;
 
-const HotelStars = styled.div `
-display: flex;
-justify-content: flex-start;
+const HotelStars = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+const MapContainer = styled.div`
+  width: 730px;
+  height: 650px;
+  margin: 30px;
+`;
 
-`
-const MapContainer = styled.div `
-width: 730px;
-height: 650px;
-margin: 30px;
-  `
-  
-const Card = styled.div `
+const Card = styled.div`
 margin: 30px 20px 33px 30px;
 background: #B7094C;
 border-radius: 10px;
@@ -55,59 +54,52 @@ right: 6%;
 :hover {
     background-color: #892B64;
 }
-`
+`;
 
 const Commodities = styled.div`
-margin: 30px 20px 33px 30px;
-background: #B7094C;
-border-radius: 10px;
-height: fit-content;
-display: flex;
-flex-wrap: wrap;
-overflow: hidden;
-width: 460px;
-position:   absolute;
-top : 180%;
-right: 6%;
-padding: 30px 40px 10px 40px;
+  margin: 30px 20px 33px 30px;
+  background: #b7094c;
+  border-radius: 10px;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  width: 460px;
+  position: absolute;
+  top: 180%;
+  right: 6%;
+  padding: 30px 40px 10px 40px;
 
-
-:hover {
-    background-color: #892B64;
-}
-`
+  :hover {
+    background-color: #892b64;
+  }
+`;
 const CardBox = styled.div`
-background: #B7094C;
-border-radius: 10px;
-height: 118px;
-width: 250px;
-margin: 10px;
-text-align: center;
+  background: #b7094c;
+  border-radius: 10px;
+  height: 118px;
+  width: 250px;
+  margin: 10px;
+  text-align: center;
 
-:hover {
-    background-color: #892B64;
-}
-`
-
+  :hover {
+    background-color: #892b64;
+  }
+`;
 
 const Comm = styled.div`
-display: flex;
-margin: 10px;
-width: 200px;
-flex-direction: row;
-align-items: center;
+  display: flex;
+  margin: 10px;
+  width: 200px;
+  flex-direction: row;
+  align-items: center;
+`;
 
-
-`
-
-const IconAlign = styled.div`
-    
-`
+const IconAlign = styled.div``;
 
 const IconItem = styled.div`
-    margin-left: -20px;
-    
-`
+  margin-left: -20px;
+`;
 const BigCard = styled.div`
   margin: 40px;
   height: calc(100vh - 120px);
@@ -122,122 +114,157 @@ const BigCard = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
   }
-`
+`;
 
-const HotelPage = (props) => {
+const HotelPage = () => {
+	const [isFavorite, setIsFavotite] = useState(false)
+  const [favIcon, setFavIcon] = useState(false);
+  const [infoHotel, setInfoHotel] = useState(null);
+  const [listRoom, setListRoom] = useState(null);
+  const id = useParams();
+  //   const src = .find((picture) => ArrayImg.includes(picture));
+	
 
-  const [favIcon, setFavIcon] = useState(false) 
-  const [ infoHotel, setInfoHotel ] = useState(null)
-  const [ listRoom, setListRoom ] = useState (null)
-  const id = useParams()
-//   const src = .find((picture) => ArrayImg.includes(picture));
+  // console.log(id)
 
-// console.log(id)
-
-useEffect(() => {
+  useEffect(() => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id.id}`)
-    .then(response => response.json())
-    .then(data => {
-        setInfoHotel(data.result)
+      .then((response) => response.json())
+      .then((data) => {
+        setInfoHotel(data.result);
         // console.log(data)
-    })
-}, [id])
+      });
+  }, [id]);
 
-useEffect(() =>{
+  useEffect(() => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id.id}/rooms`)
-    .then(response => response.json())
-    .then (data => { 
-        setListRoom(data)
-        console.log(data)
+      .then((response) => response.json())
+      .then((data) => {
+        setListRoom(data);
+        // console.log(data)
+      });
+  }, [id]);
 
-    })
-}, [id])
+  function handleFavoriteCardClick(id) {
+    const favorites = localStorage.getItem("favorites");
 
-//  console.log(center)
-    if (infoHotel == null || listRoom == null) {
-        return <p>Chargement en cours</p>
+    if (!favorites) {
+      localStorage.setItem("favorites", JSON.stringify([id]));
+    } else {
+      let array = JSON.parse(favorites);
+      array = [...array, id];
+      localStorage.setItem("favorites", JSON.stringify(array));
     }
+  }
 
-    return (
+  function handleUnfavoriteCardClick(id) {
+    const favorites = localStorage.getItem("favorites");
+
+    let array = JSON.parse(favorites);
+
+    array.splice(id, 1)
+
+    localStorage.setItem("favorites", JSON.stringify(array));
+  }
+
+  //  console.log(center)
+  if (infoHotel == null || listRoom == null) {
+    return <p>Chargement en cours</p>;
+  }
+
+  return (
     <>
-    <section>
+      <section>
         <div>
-        
-        <HotelTitle>
+          <HotelTitle>
             <h4>{infoHotel.name}</h4>
             <p>{infoHotel.address}</p>
             <h2>{infoHotel.price}€</h2>
             <HotelStars>
-                {[...Array(infoHotel.stars)].map((i) => 
-                        <AiFillStar 
-                            size={20}
-                            color={"yellow"}
-                        />
-                )}
+              {[...Array(infoHotel.stars)].map((i) => (
+                <AiFillStar size={20} color={"yellow"} />
+              ))}
             </HotelStars>
-            <Favorites
-                onMouseEnter={() => {
-                    setFavIcon(true)
-                }}
-                onMouseLeave={() => {
-                    setFavIcon(false)
-                }}
-                > Favorites
-                {!favIcon ? (
-                <AiOutlineHeart size={20}/>
-                ) : (
-                <AiFillHeart size={20}/>
-                )}    
-            </Favorites>
-        </HotelTitle>
-        <Carrousels/>
-        <MapContainer>
-        <HotelMap
-        map="page-hotel"
-        hotels={[infoHotel]}
-        center={infoHotel.location}
-         />
-          <Card>
+						{!isFavorite ? (
+              <Favorites 
+								onClick={() => handleFavoriteCardClick(infoHotel._id)}
+							>
+                <AiOutlineHeart size={24} />
+              </Favorites>
+            ) : (
+              <Favorites 
+								onClick={() => handleUnfavoriteCardClick(infoHotel._id)}
+							>
+                <AiFillHeart size={24} />
+              </Favorites>
+            )}
+            {/* <Favorites
+              onMouseEnter={() => {
+                setFavIcon(true);
+              }}
+              onMouseLeave={() => {
+                setFavIcon(false);
+              }}
+            >
+              {" "}
+              Favorites
+              {!favIcon ? (
+                <AiOutlineHeart size={20} />
+              ) : (
+                <AiFillHeart size={20} />
+              )}
+            </Favorites> */}
+          </HotelTitle>
+          <Carrousels />
+          <MapContainer>
+            <HotelMap
+              map="page-hotel"
+              hotels={[infoHotel]}
+              center={infoHotel.location}
+            />
+            <Card>
               <h2>Informations :</h2>
-          <p>Tel : {infoHotel.phone} <br/>
-            Email : {infoHotel.email} <br/>
-            Website : {infoHotel.website}
-          </p> 
-        </Card>
-        <Commodities> 
-            <h2>Commodities :</h2>
-        {infoHotel.commodities.filter(function(ele , pos){
-            return infoHotel.commodities.indexOf(ele) == pos;
-        }).map((commoditie) => (
-         <Comm>
-            <IconAlign>
-                <Icon comodity={commoditie}></Icon>
-            </IconAlign>
-            <IconItem>
-                <p>{commoditie}</p>
-            </IconItem>
-        </Comm>
-))} 
-    </Commodities>
-        </MapContainer> 
-    
-    <BigCard style={{ display: "flex", justifyContent:"space-around"}}>
-        {listRoom.results.map(room =>
-            <div style={{ width: "100%", height:"545px"}}>
-                <CardBox>
-                    <h4>Room</h4>
-                    <p>People: {room.people}</p>
-                    <p>{room.price}€</p>
-                    {room.isBathroom ? <FaBath/> : <></>}
-                </CardBox>    
-            </div>      
-        )}
-        </BigCard>
-      </div>
-   </section>
+              <p>
+                Tel : {infoHotel.phone} <br />
+                Email : {infoHotel.email} <br />
+                Website : {infoHotel.website}
+              </p>
+            </Card>
+            <Commodities>
+              <h2>Commodities :</h2>
+              {infoHotel.commodities
+                .filter(function (ele, pos) {
+                  return infoHotel.commodities.indexOf(ele) == pos;
+                })
+                .map((commoditie) => (
+                  <Comm>
+                    <IconAlign>
+                      <Icon comodity={commoditie}></Icon>
+                    </IconAlign>
+                    <IconItem>
+                      <p>{commoditie}</p>
+                    </IconItem>
+                  </Comm>
+                ))}
+            </Commodities>
+          </MapContainer>
 
-   </>
- ) 
-} 
+          <BigCard style={{ display: "flex", justifyContent: "space-around" }}>
+            {listRoom.results.map((room) => (
+              <div style={{ width: "100%", height: "545px" }}>
+                <CardBox>
+                  <h4>Room</h4>
+                  <p>People: {room.people}</p>
+                  <p>{room.price}€</p>
+                  {room.isBathroom ? <FaBath /> : <></>}
+                </CardBox>
+              </div>
+            ))}
+          </BigCard>
+        </div>
+      </section>
+    </>
+  );
+};
 
 export default HotelPage;

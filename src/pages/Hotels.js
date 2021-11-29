@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import styled from 'styled-components'
-import HotelCard from '../components/HotelCard'
-import HotelMap from '../components/HotelMap'
+import styled from "styled-components";
+import HotelCard from "../components/HotelCard";
+import HotelMap from "../components/HotelMap";
 import { Link } from "react-router-dom";
-
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 20px;
-`
+`;
 
 const HotelsList = styled.div`
   margin: 0 10px;
@@ -30,13 +29,13 @@ const HotelsList = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
   }
-`
+`;
 
 const HotelsMap = styled.div`
   width: 50%;
   padding-right: 10px;
   height: calc(100vh - 120px);
-`
+`;
 
 const Pages = styled.button`
   width: 25px;
@@ -46,100 +45,119 @@ const Pages = styled.button`
   border-radius: 5px;
   margin: 10px 15px;
   color: white;
-  font-family: 'Abel', sans-serif;   
+  font-family: "Abel", sans-serif;
 
   :hover {
     background: #014f86;
     border: none;
   }
-`
+`;
 
 const CenterPages = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-`
+`;
 
 const Hotels = () => {
-    const [selectedHotel, setSelectedHotel] = useState({})
-    const [ hotels, setHotels ] = useState(null)
-    const [ center, setCenter ] = useState(null)
-    const [ page, setPage ] = useState(1)
-    let { city } = useParams()
-   
-    // console.log("hotels", city)
+  const [selectedHotel, setSelectedHotel] = useState({});
+  const [hotels, setHotels] = useState(null);
+  const [center, setCenter] = useState(null);
+  const [page, setPage] = useState(1);
+  let { city } = useParams();
 
-  useEffect(() => {    
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
-    .then(res => res.json())
-    .then(data => {
-      setHotels(data.results)
-      setCenter(data.center)
-    })
-  }, [city, page]) 
+  // console.log("hotels", city)
 
-  function handleCardClick(id) {
-    const favorites = localStorage.getItem("favorites")
-    
+  useEffect(() => {
+    fetch(
+      `https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setHotels(data.results);
+        setCenter(data.center);
+      });
+  }, [city, page]);
+
+  function handleFavoriteCardClick(id) {
+    const favorites = localStorage.getItem("favorites");
+
     if (!favorites) {
-      localStorage.setItem("favorites", JSON.stringify([id]))
+      localStorage.setItem("favorites", JSON.stringify([id]));
     } else {
-      let array = JSON.parse(favorites)
-      array = [...array, id]
-      localStorage.setItem("favorites", JSON.stringify(array))
-    }
+      let array = JSON.parse(favorites);
+      array = [...array, id];
+      localStorage.setItem("favorites", JSON.stringify(array));
+    };
   }
 
+  function isFavorite(id) {
+    const localStorageFavorites = localStorage.getItem("favorites")
+		if(!localStorageFavorites) {
+			localStorage.setItem("favorites", ([]))
+		} else {
+			const favorites = JSON.parse(localStorageFavorites)
+			// return favorites.find(id)
+		}
+  }
+
+  function handleUnfavoriteCardClick(id) {
+    const favorites = localStorage.getItem("favorites");
+
+    let array = JSON.parse(favorites);
+
+    array.splice(id, 1)
+
+    localStorage.setItem("favorites", JSON.stringify(array));
+
+  }
 
   if (!center) {
-    return <p>Chargement...</p>
+    return <p>Chargement...</p>;
   }
 
-    // console.log("city:", city)
-
-    return (
-        <Container>
-            <HotelsList>
-                {hotels == null ? (
-                    <p>En cours de chargement...</p>
-                ):(
-                    hotels.map((hotel, index) => (
-                        <Link 
-                            to={`/hotelpage/${hotel._id}`} 
-                            style={{ textDecoration: "none" }}>
-                            <HotelCard 
-                                key={index} 
-                                name={hotel.name} 
-                                price={hotel.price} 
-                                stars={hotel.stars}
-                                image={hotel.pictures}
-                                id={hotel._id}
-                                selectedHotel={selectedHotel}
-                                handleCardClick={() => handleCardClick(hotel._id)}
-                            />
-                        </Link>
-                    ))
-                )}
-                <CenterPages>
-                  <Pages onClick={() => setPage(1)} >1</Pages>
-                  <Pages onClick={() => setPage(2)} >2</Pages>
-                  <Pages onClick={() => setPage(3)} >3</Pages>
-                  <Pages onClick={() => setPage(4)} >4</Pages>                  
-                </CenterPages>
-
-            </HotelsList>
-            <HotelsMap>
-                <HotelMap 
-                  map="list"
-                  center={center} 
-                  hotels={hotels}
-                  selectedHotel={selectedHotel}
-                  setSelectedHotel={setSelectedHotel}
-                />
-            </HotelsMap>
-           
-        </Container>
-    );
+  return (
+    <Container>
+      <HotelsList>
+        {hotels == null ? (
+          <p>En cours de chargement...</p>
+        ) : (
+          hotels.map((hotel, index) => (
+            <Link
+              to={`/hotelpage/${hotel._id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <HotelCard
+                key={index}
+                name={hotel.name}
+                price={hotel.price}
+                stars={hotel.stars}
+                image={hotel.pictures}
+                id={hotel._id}
+                selectedHotel={selectedHotel}
+                isFavorite={isFavorite(hotel._id)}
+              />
+            </Link>
+          ))
+        )}
+        <CenterPages>
+          <Pages onClick={() => setPage(1)}>1</Pages>
+          <Pages onClick={() => setPage(2)}>2</Pages>
+          <Pages onClick={() => setPage(3)}>3</Pages>
+          <Pages onClick={() => setPage(4)}>4</Pages>
+        </CenterPages>
+      </HotelsList>
+      <HotelsMap>
+        <HotelMap
+          map="list"
+          center={center}
+          hotels={hotels}
+          selectedHotel={selectedHotel}
+          setSelectedHotel={setSelectedHotel}
+        />
+      </HotelsMap>
+    </Container>
+  );
 };
 
-export default Hotels
+export default Hotels;
