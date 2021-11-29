@@ -11,18 +11,6 @@ import styled from "styled-components";
 import ArrayImg from "../components/ArrayImg";
 import { MdPictureAsPdf } from "react-icons/md";
 
-const Image = styled.div `
-
-@media (min-width: 376px) {
-display: none;
-}
-`
-const Text = styled.div `
-@media (min-width: 373px) {
-display: none;
-}
-`
-
 
 const Carrousels = (props) => {
   const src = props.image.find((picture) => ArrayImg.includes(picture));

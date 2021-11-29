@@ -93,7 +93,7 @@ const Commodities = styled.div`
   border-radius: 10px;
   height: fit-content;
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   width: 460px;
   padding: 30px 40px 10px 40px;
 
@@ -102,7 +102,11 @@ const Commodities = styled.div`
   }
 `;
 const Slider = styled.div`
-@media (max-width: 376px) {
+  width: 50%;
+  margin:  auto;
+  text-align: center;
+
+  @media (max-width: 376px) {
     order: -3;
 
 `;
@@ -213,7 +217,7 @@ const HotelPage = () => {
             )}
           </HotelTitle>
           <Slider>
-            <Carrousels />
+            <Carrousels image={infoHotel.pictures} />
           </Slider>
           <MapContainer>
             <HotelMap
@@ -227,7 +231,10 @@ const HotelPage = () => {
                 <p>
                   Tel : {infoHotel.phone} <br />
                   Email : {infoHotel.email} <br />
-                  Website : <a href={infoHotel.website} style={{color: "white"}}>{infoHotel.website}</a>
+                  Website :{" "}
+                  <a href={infoHotel.website} style={{ color: "white" }}>
+                    {infoHotel.website}
+                  </a>
                 </p>
               </Card>
               <Commodities>
@@ -256,10 +263,14 @@ const HotelPage = () => {
             {listRoom.results.map((room) => (
               <div style={{ width: "100%", height: "150px" }}>
                 <CardBox>
-                  <h4>Room</h4>
-                  <p>People: {room.people}</p>
-                  <p>{room.price}€</p>
-                  {room.isBathroom ? <FaBath /> : <></>}
+                  <h4 style={{ margin: "2px" }}>Room</h4>
+                  <p style={{ margin: "2px" }}>People: {room.people}</p>
+                  <p style={{ margin: "2px" }}>{room.price}€</p>
+                  {room.isBathroom ? (
+                    <FaBath style={{ margin: "2px" }} />
+                  ) : (
+                    <></>
+                  )}
                 </CardBox>
               </div>
             ))}
