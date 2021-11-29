@@ -76,7 +76,9 @@ const Hotels = () => {
       setHotels(data.results)
       setCenter(data.center)
     })
-  }, [city, page])  
+  }, [city, page]) 
+
+
 
   if (!center) {
     return <p>Chargement...</p>
@@ -102,6 +104,7 @@ const Hotels = () => {
                                 stars={hotel.stars}
                                 image={hotel.pictures}
                                 id={hotel._id}
+                                selectedHotel={selectedHotel}
                             />
                         </Link>
                     ))
@@ -109,6 +112,7 @@ const Hotels = () => {
             </HotelsList>
             <HotelsMap>
                 <HotelMap 
+                  map="list"
                   center={center} 
                   hotels={hotels}
                   selectedHotel={selectedHotel}

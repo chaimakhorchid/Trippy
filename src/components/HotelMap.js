@@ -4,7 +4,6 @@ import { useState } from "react"
 import styled from "styled-components"
 import HotelMarker from "./HotelMarker"
 
-
 const HotelMap = (props) => {
   const setSelectedHotel = props.setSelectedHotel 
   const hotels = props.hotels
@@ -26,7 +25,18 @@ const HotelMap = (props) => {
             lng={hotel.location.lon}
             setSelectedHotel={setSelectedHotel}
             price={hotel.price}
-          />
+            map={props.map}
+          >
+            {props.map === "list" ? 
+            <p>{hotel.price}€</p>
+            :
+            <div>
+              <p>{hotel.name}</p>
+              <p>{hotel.address}</p>
+              <p>{hotel.price} €</p>
+            </div>
+            }
+          </HotelMarker>
         ))}
       </GoogleMapReact>
   )
