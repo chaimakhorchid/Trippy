@@ -12,6 +12,9 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 20px;
+  @media (max-width: 376px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const HotelsList = styled.div`
@@ -30,12 +33,22 @@ const HotelsList = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
   }
+
+  @media (max-width: 376px) {
+    width:100%;
+  }
 `
 
 const HotelsMap = styled.div`
   width: 50%;
   padding-right: 10px;
   height: calc(100vh - 120px);
+
+  @media (max-width: 376px) {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+  }
 `
 
 const Pages = styled.button`

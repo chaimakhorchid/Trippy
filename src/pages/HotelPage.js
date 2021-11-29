@@ -11,6 +11,12 @@ import HotelMap from '../components/HotelMap';
 import Icon from '../components/Icon';
 import Carrousels from '../components/Carousel'
 
+const Container = styled.div`
+@media (max-width: 376px) {
+    display: flex;
+    flex-direction: column;
+}  
+`
 const HotelTitle = styled.div `
 font-size: 20px;
 margin : 40px;
@@ -18,11 +24,19 @@ margin : 40px;
 h2 {
     text-align: end;
 }
+@media (max-width: 376px) {
+margin: 0px 20px;
+font-size: 30px;
+}
 `
 const Favorites = styled.div`
 margin-left: 610px;
 position:absolute;
 top: 29%;
+
+@media (max-width: 376px) {
+    position: static;
+}
 `
 
 const HotelStars = styled.div `
@@ -34,6 +48,15 @@ const MapContainer = styled.div `
 width: 730px;
 height: 650px;
 margin: 30px;
+
+@media (max-width: 376px) {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    
+  }
   `
   
 const Card = styled.div `
@@ -55,6 +78,21 @@ right: 6%;
 :hover {
     background-color: #892B64;
 }
+
+@media (max-width: 376px) {
+    background: #3F3260;
+    order: -2;
+    position: static;
+    margin: 0px;
+    padding: 5px;
+    width: 100%;
+    height: 300px;
+    font-size : 20px;
+    border-radius: 0px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+
+  }
 `
 
 const Commodities = styled.div`
@@ -75,6 +113,15 @@ padding: 30px 40px 10px 40px;
 :hover {
     background-color: #892B64;
 }
+@media (max-width: 376px) {
+    position: static;
+}
+
+`
+const Slider = styled.div `
+@media (max-width: 376px) {
+    order: -3;
+
 `
 const CardBox = styled.div`
 background: #B7094C;
@@ -109,8 +156,6 @@ const IconItem = styled.div`
     
 `
 const BigCard = styled.div`
-  margin: 40px;
-  height: calc(100vh - 120px);
   overflow-x: scroll;
   ::-webkit-scrollbar {
     width: 10px;
@@ -161,7 +206,7 @@ useEffect(() =>{
     return (
     <>
     <section>
-        <div>
+        <Container>
         
         <HotelTitle>
             <h4>{infoHotel.name}</h4>
@@ -190,7 +235,9 @@ useEffect(() =>{
                 )}    
             </Favorites>
         </HotelTitle>
-        <Carrousels/>
+        <Slider>
+            <Carrousels/>
+        </Slider>
         <MapContainer>
         <HotelMap
         map="page-hotel"
@@ -223,7 +270,7 @@ useEffect(() =>{
     
     <BigCard style={{ display: "flex", justifyContent:"space-around"}}>
         {listRoom.results.map(room =>
-            <div style={{ width: "100%", height:"545px"}}>
+            <div style={{ width: "100%", height:"150px"}}>
                 <CardBox>
                     <h4>Room</h4>
                     <p>People: {room.people}</p>
@@ -233,7 +280,7 @@ useEffect(() =>{
             </div>      
         )}
         </BigCard>
-      </div>
+      </Container>
    </section>
 
    </>
