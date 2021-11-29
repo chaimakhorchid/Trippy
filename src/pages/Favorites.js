@@ -33,8 +33,9 @@ const Favorites = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Favorites</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Favorites</h1>
       {listFavorite.map(favorite => 
+      <div style={{width: "900px", margin: "0 auto"}}>
         <HotelCard
           key={favorite._id}
           name={favorite.name}
@@ -44,6 +45,7 @@ const Favorites = () => {
           id={favorite._id}
           selectedHotel=""
         />
+      </div>
       )}
     </div>
   );

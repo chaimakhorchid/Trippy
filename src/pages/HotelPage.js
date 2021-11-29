@@ -71,13 +71,6 @@ const Card = styled.div`
   width: 460px;
   text-align: left;
   padding: 30px 40px 10px 40px;
-  // position:absolute;
-  // top: 140%;
-  // right: 6%;
-
-  :hover {
-    background-color: #892b64;
-  }
 
   @media (max-width: 376px) {
     background: #3f3260;
@@ -102,14 +95,8 @@ const Commodities = styled.div`
   display: flex;
 	flex-direction: column;
   width: 460px;
-  // position: absolute;
-  // top: 180%;
-  // right: 6%;
   padding: 30px 40px 10px 40px;
 
-  :hover {
-    background-color: #892b64;
-  }
   @media (max-width: 376px) {
     position: static;
   }
