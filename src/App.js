@@ -9,6 +9,7 @@ import Favorites from './pages/Favorites'
 import NotFound from "./pages/NotFound";
 import { HotelContextProvider } from "./context/Hotel";
 import { CitiesContextProvider } from "./context/ListCity";
+import { FavoritesContextProvider } from "./context/Favorites";
 
 
 const Body = styled.div`
@@ -16,17 +17,14 @@ const Body = styled.div`
   color: white;
   font-family: "Alegreya Sans SC", sans-serif;
   width: 100%;
-  
-  ::-webkit-scrollbar {
-    width: 10px;
+
+  @media (max-width: 376px) {
+    height 140vh;
+
+
   }
-  ::-webkit-scrollbar-thumb {
-    background: #b7094c;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #b30000;
-  }
+
+
 `;
 
 const App = () => {
@@ -34,6 +32,7 @@ const App = () => {
     <Body>
       <BrowserRouter>
         <CitiesContextProvider>
+          <FavoritesContextProvider>
             <HotelContextProvider>
               <div>
                 <Nav />
@@ -46,6 +45,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </HotelContextProvider>
+          </FavoritesContextProvider>
         </CitiesContextProvider>
       </BrowserRouter>
     </Body>

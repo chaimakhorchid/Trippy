@@ -6,6 +6,7 @@ import ArrayImg from "./ArrayImg";
 import { Link } from "react-router-dom";
 import { createPortal } from "react-dom";
 import HotelMap from "./HotelMap";
+import { FavoritesContext } from "../context/Favorites";
 
 const CardBox = styled.div`
   margin: 0px 20px 33px 0px;
@@ -53,6 +54,7 @@ const Like = styled.div`
 `;
 
 const HotelCard = (props) => {
+  const { handleFavoriteCardClick, handleUnfavoriteCardClick, isFavorite} = useContext(FavoritesContext)
   const selectedHotel = props.selectedHotel;
   const src = props.image.find((picture) => ArrayImg.includes(picture));
   const ref = useRef();
@@ -104,13 +106,15 @@ const HotelCard = (props) => {
             {/* <AiOutlineHeart size={24} /> */}
         </Link>
       </CardContent>
-      {!props.isFavorite ? 
-        <Like
+      {!isFavorite(props.id) ? 
+        <Like 
+          onClick={() => handleFavoriteCardClick(props.id)}
         >
           <AiOutlineHeart size={24} />
         </Like>
         :
         <Like
+          onClick={() => handleUnfavoriteCardClick(props.id)}
         >
           <AiFillHeart size={24} />
         </Like>

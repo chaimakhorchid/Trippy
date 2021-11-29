@@ -11,7 +11,10 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 20px;
-`;
+  @media (max-width: 376px) {
+    flex-direction: column-reverse;
+  }
+`
 
 const HotelsList = styled.div`
   margin: 0 10px;
@@ -29,13 +32,23 @@ const HotelsList = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
   }
-`;
+
+  @media (max-width: 376px) {
+    width:100%;
+  }
+`
 
 const HotelsMap = styled.div`
   width: 50%;
   padding-right: 10px;
   height: calc(100vh - 120px);
-`;
+
+  @media (max-width: 376px) {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+`
 
 const Pages = styled.button`
   width: 25px;
@@ -79,38 +92,6 @@ const Hotels = () => {
       });
   }, [city, page]);
 
-  function handleFavoriteCardClick(id) {
-    const favorites = localStorage.getItem("favorites");
-
-    if (!favorites) {
-      localStorage.setItem("favorites", JSON.stringify([id]));
-    } else {
-      let array = JSON.parse(favorites);
-      array = [...array, id];
-      localStorage.setItem("favorites", JSON.stringify(array));
-    };
-  }
-
-  function isFavorite(id) {
-    const localStorageFavorites = localStorage.getItem("favorites")
-		if(!localStorageFavorites) {
-			localStorage.setItem("favorites", ([]))
-		} else {
-			const favorites = JSON.parse(localStorageFavorites)
-			// return favorites.find(id)
-		}
-  }
-
-  function handleUnfavoriteCardClick(id) {
-    const favorites = localStorage.getItem("favorites");
-
-    let array = JSON.parse(favorites);
-
-    array.splice(id, 1)
-
-    localStorage.setItem("favorites", JSON.stringify(array));
-
-  }
 
   if (!center) {
     return <p>Chargement...</p>;
@@ -123,10 +104,10 @@ const Hotels = () => {
           <p>En cours de chargement...</p>
         ) : (
           hotels.map((hotel, index) => (
-            <Link
-              to={`/hotelpage/${hotel._id}`}
-              style={{ textDecoration: "none" }}
-            >
+            // <Link
+            //   to={`/hotelpage/${hotel._id}`}
+            //   style={{ textDecoration: "none" }}
+            // >
               <HotelCard
                 key={index}
                 name={hotel.name}
@@ -135,9 +116,8 @@ const Hotels = () => {
                 image={hotel.pictures}
                 id={hotel._id}
                 selectedHotel={selectedHotel}
-                isFavorite={isFavorite(hotel._id)}
               />
-            </Link>
+            // </Link>
           ))
         )}
         <CenterPages>
