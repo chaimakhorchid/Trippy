@@ -57,18 +57,18 @@ const InfoContainer = styled.div`
     margin-bottom: 20px;
     flex-direction: column;
   }
-`
+`;
 
 const MapContainer = styled.div`
   width: calc(100% - 50px);
-  height: 650px; 
-  
+  height: 650px;
+
   @media (max-width: 376px) {
     width: 100%;
     height: 900px;
     order: 1;
   }
-`
+`;
 
 const Card = styled.div`
   margin: 0px 20px 33px 30px;
@@ -115,12 +115,13 @@ const Commodities = styled.div`
   }
 `;
 const Slider = styled.div`
-text-align: center;
-margin: 0 auto;
-width: 50%;
-@media (max-width: 376px) {
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  @media (max-width: 376px) {
     order: -3;
-}
+    width: 100%;
+  }
 `;
 const CardBox = styled.div`
   background: #b7094c;
@@ -151,14 +152,12 @@ const Comm = styled.div`
   }
 `;
 
-const IconAlign = styled.div``;
-
 const IconItem = styled.div`
   margin-left: -20px;
 `;
 const BigCard = styled.div`
   display: flex;
-  justifyContent: space-around;
+  justifycontent: space-around;
   overflow-x: scroll;
   ::-webkit-scrollbar {
     height: 10px;
@@ -179,7 +178,7 @@ const BoxCard = styled.div`
   @media (max-width: 376px) {
     height: 120px;
   }
-`
+`;
 
 const Line = styled.div`
   display: flex;
@@ -190,13 +189,12 @@ const Line = styled.div`
     flex-direction: column;
     justify-content: space-around;
   }
-`
+`;
 
 const ListCommodities = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  
 `;
 
 const HotelPage = () => {
@@ -243,15 +241,17 @@ const HotelPage = () => {
               <HotelStars>
                 {[...Array(infoHotel.stars)].map((i) => (
                   <AiFillStar size={20} color={"yellow"} />
-                  ))}
+                ))}
               </HotelStars>
               {!isFavorite(infoHotel._id) ? (
-                <Favorites onClick={() => handleFavoriteCardClick(infoHotel._id)}>
+                <Favorites
+                  onClick={() => handleFavoriteCardClick(infoHotel._id)}
+                >
                   <AiOutlineHeart size={24} />
                 </Favorites>
               ) : (
                 <Favorites
-                onClick={() => handleUnfavoriteCardClick(infoHotel._id)}
+                  onClick={() => handleUnfavoriteCardClick(infoHotel._id)}
                 >
                   <AiFillHeart size={24} />
                 </Favorites>
@@ -291,9 +291,9 @@ const HotelPage = () => {
                     })
                     .map((commoditie) => (
                       <Comm>
-                        <IconAlign>
+                        <div>
                           <Icon comodity={commoditie}></Icon>
-                        </IconAlign>
+                        </div>
                         <IconItem>
                           <p>{commoditie}</p>
                         </IconItem>
