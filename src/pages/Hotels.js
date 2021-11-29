@@ -5,12 +5,14 @@ import styled from "styled-components";
 import HotelCard from "../components/HotelCard";
 import HotelMap from "../components/HotelMap";
 import { Link } from "react-router-dom";
+import Bordure from "../assets/bordure.svg"
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 20px;
+  height: calc(100vh - 220px);
   @media (max-width: 376px) {
     flex-direction: column-reverse;
   }
@@ -20,7 +22,6 @@ const HotelsList = styled.div`
   margin: 0 5px;
   width: 50%;
   padding-right: 10px;
-  height: calc(100vh - 120px);
   overflow-y: scroll;
   ::-webkit-scrollbar {
     width: 10px;
@@ -35,13 +36,13 @@ const HotelsList = styled.div`
 
   @media (max-width: 376px) {
     width:100%;
+    height: calc(100vh - 400px)
   }
 `
 
 const HotelsMap = styled.div`
   width: 50%;
   padding-right: 10px;
-  height: calc(100vh - 120px);
 
   @media (max-width: 376px) {
     width: 100%;
@@ -98,45 +99,48 @@ const Hotels = () => {
   }
 
   return (
-    <Container>
-      <HotelsList>
-        {hotels == null ? (
-          <p>En cours de chargement...</p>
-        ) : (
-          hotels.map((hotel, index) => (
-            // <Link
-            //   to={`/hotelpage/${hotel._id}`}
-            //   style={{ textDecoration: "none" }}
-            // >
-              <HotelCard
-                key={index}
-                name={hotel.name}
-                price={hotel.price}
-                stars={hotel.stars}
-                image={hotel.pictures}
-                id={hotel._id}
-                selectedHotel={selectedHotel}
-              />
-            // </Link>
-          ))
-        )}
+    <>
+    <h1 style= {{ textAlign: "center", marginTop: "20px", fontFamily: "Abel", textTransform: "uppercase" }}>Hotels in {city}</h1>
+        <Container>
+        <HotelsList>
+            {hotels == null ? (
+            <p>En cours de chargement...</p>
+            ) : (
+            hotels.map((hotel, index) => (
+                // <Link
+                //   to={`/hotelpage/${hotel._id}`}
+                //   style={{ textDecoration: "none" }}
+                // >
+                <HotelCard
+                    key={index}
+                    name={hotel.name}
+                    price={hotel.price}
+                    stars={hotel.stars}
+                    image={hotel.pictures}
+                    id={hotel._id}
+                    selectedHotel={selectedHotel}
+                />
+                // </Link>
+            ))
+            )}
+        </HotelsList>
+        <HotelsMap>
+            <HotelMap
+            map="list"
+            center={center}
+            hotels={hotels}
+            selectedHotel={selectedHotel}
+            setSelectedHotel={setSelectedHotel}
+            />
+        </HotelsMap>
+        </Container>
         <CenterPages>
-          <Pages onClick={() => setPage(1)}>1</Pages>
-          <Pages onClick={() => setPage(2)}>2</Pages>
-          <Pages onClick={() => setPage(3)}>3</Pages>
-          <Pages onClick={() => setPage(4)}>4</Pages>
+            <Pages onClick={() => setPage(1)}>1</Pages>
+            <Pages onClick={() => setPage(2)}>2</Pages>
+            <Pages onClick={() => setPage(3)}>3</Pages>
+            <Pages onClick={() => setPage(4)}>4</Pages>
         </CenterPages>
-      </HotelsList>
-      <HotelsMap>
-        <HotelMap
-          map="list"
-          center={center}
-          hotels={hotels}
-          selectedHotel={selectedHotel}
-          setSelectedHotel={setSelectedHotel}
-        />
-      </HotelsMap>
-    </Container>
+    </>
   );
 };
 

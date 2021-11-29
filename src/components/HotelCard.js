@@ -54,9 +54,10 @@ const Like = styled.div`
 `;
 
 const HotelCard = (props) => {
-  const { handleFavoriteCardClick, handleUnfavoriteCardClick, isFavorite} = useContext(FavoritesContext)
+  const { handleFavoriteCardClick, handleUnfavoriteCardClick, isFavorite } = useContext(FavoritesContext)
   const selectedHotel = props.selectedHotel;
   const src = props.image.find((picture) => ArrayImg.includes(picture));
+  console.log("test src",src)
   const ref = useRef();
 
   useEffect(() => {

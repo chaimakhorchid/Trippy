@@ -8,12 +8,10 @@ import {RiFridgeFill} from 'react-icons/ri';
 import {BiBed} from 'react-icons/bi';
 
 
-
 const Icons = styled.div`
 column-count: 2;
 
 `
-
 
 function Icon (props) {
     return (
