@@ -119,6 +119,7 @@ const Commodities = styled.div`
 
 `
 const Slider = styled.div `
+width: 600px;
 @media (max-width: 376px) {
     order: -3;
 
@@ -226,7 +227,7 @@ const HotelPage = () => {
             )}
         </HotelTitle>
         <Slider>
-            <Carrousels/>
+            <Carrousels image= {infoHotel.pictures}/>
         </Slider>
         <MapContainer>
         <HotelMap
