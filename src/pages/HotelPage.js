@@ -11,7 +11,7 @@ import Carrousels from "../components/Carousel";
 import { FavoritesContext } from "../context/Favorites";
 
 const Container = styled.div`
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     display: flex;
     flex-direction: column;
   }
@@ -23,7 +23,7 @@ const HotelTitle = styled.div`
   h2 {
     text-align: end;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     margin: 10px 20px;
     font-size: 30px;
   }
@@ -31,7 +31,7 @@ const HotelTitle = styled.div`
 const Favorites = styled.div`
   margin-left: 500px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     margin: 0px;
     text-align: right;
   }
@@ -49,7 +49,7 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     width: calc(100% - 55px);
     height: 750px;
     margin-bottom: 20px;
@@ -61,7 +61,7 @@ const MapContainer = styled.div`
   width: calc(100% - 50px);
   height: 650px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     width: 100%;
     height: 900px;
     order: 1;
@@ -80,7 +80,7 @@ const Card = styled.div`
   text-align: left;
   padding: 30px 40px 10px 40px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     background: #3f3260;
     order: -2;
     position: none;
@@ -105,7 +105,7 @@ const Commodities = styled.div`
   width: 460px;
   padding: 30px 40px 10px 40px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     margin: 10px 0;
     background: #3f3260;
     padding: 0;
@@ -116,7 +116,7 @@ const Slider = styled.div`
   text-align: center;
   margin: 0 auto;
   width: 50%;
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     order: -3;
     width: 100%;
   }
@@ -132,7 +132,7 @@ const CardBox = styled.div`
   :hover {
     background-color: #892b64;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     width: 170px;
     height: 98px;
   }
@@ -145,7 +145,7 @@ const Comm = styled.div`
   flex-direction: row;
   align-items: center;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     margin: 10px 0;
   }
 `;
@@ -173,7 +173,7 @@ const BoxCard = styled.div`
   width: 100%;
   height: 150px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     height: 120px;
   }
 `;
@@ -183,7 +183,7 @@ const Line = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     flex-direction: column;
     justify-content: space-around;
   }

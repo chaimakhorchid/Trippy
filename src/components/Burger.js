@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Button = styled.button`
   display: none;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     display: flex;
     justify-content: flex-end;
     align-items: center;

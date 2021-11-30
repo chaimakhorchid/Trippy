@@ -45,7 +45,7 @@ const Nav = () => {
 
   const Categorie = styled.div`
     display: flex;
-    @media (max-width: 376px) {
+    @media (max-width: 426px) {
       flex-direction: column;
       justify-content: center;
     }
@@ -56,7 +56,7 @@ const Nav = () => {
     :hover {
         font-weight: bold; 
     }
-    @media (max-width: 376px) {
+    @media (max-width: 426px) {
       ${open ? "display: flex" : "display: none"}
     }
   `
@@ -64,7 +64,7 @@ const Nav = () => {
   const Burger = styled.button`
   display: none;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     display: flex;
     ${open ? "justify-content: center" : "justify-content: flex-end"} ;
     align-items: center;

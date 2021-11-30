@@ -11,7 +11,7 @@ const CityContainer = styled.div`
     justify-content: center;
     font-family: 'Abel', sans-serif;
     
-    @media (max-width: 376px) {
+    @media (max-width: 426px) {
         display: flex;
         flex-wrap: wrap;
         height 40vh;

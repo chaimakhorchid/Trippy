@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: space-between;
   margin: 20px;
   height: calc(100vh - 220px);
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     flex-direction: column-reverse;
   }
 `
@@ -33,7 +33,7 @@ const HotelsList = styled.div`
     background: #b30000;
   }
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     width:100%;
     height: calc(100vh - 400px)
   }
@@ -43,7 +43,7 @@ const HotelsMap = styled.div`
   width: 50%;
   padding-right: 10px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     width: 100%;
     height: 300px;
     margin-bottom: 20px;

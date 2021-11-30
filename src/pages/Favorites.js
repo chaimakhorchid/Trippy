@@ -7,7 +7,7 @@ const Card = styled.div`
   width: 900px;
   margin: 0 auto;
 
-  @media (max-width: 376px) {
+  @media (max-width: 426px) {
     width: 100vw;
     margin: 10px;
   }

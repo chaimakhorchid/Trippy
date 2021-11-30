@@ -16,9 +16,8 @@ const CityCard = (props) => {
       box-shadow: 0 0 10px #ADE8F4;
     }
 
-    @media (max-width: 812px) {
+    @media (max-width: 426px) {
         margin: 5% 6%;
-
       }
 
     div {
@@ -29,8 +28,8 @@ const CityCard = (props) => {
         border-radius: 2.5rem 2.5rem 0 0;    
     }
 
-    @media (max-width: 376px) {
-        height: 50%;
+    @media (max-width: 426px) {
+        height: 190px;
         width: 90%;
 
       }
