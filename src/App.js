@@ -1,35 +1,53 @@
-import React, { Component } from 'react'
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import Nav from "./components/Nav";
+import Home from "./pages/Home";
+import HotelPage from "./pages/HotelPage";
+import Hotels from "./pages/Hotels";
+import Favorites from './pages/Favorites'
+import NotFound from "./pages/NotFound";
+import { HotelContextProvider } from "./context/Hotel";
+import { CitiesContextProvider } from "./context/ListCity";
+import { FavoritesContextProvider } from "./context/Favorites";
 
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
-import Home from './pages/Home';
-import HotelPage from './pages/HotelPage';
-import Hotels from './pages/Hotels'
-import NotFound from './pages/NotFound';
 
+const Body = styled.div`
+  background-color: #3f3260;
+  color: white;
+  font-family: "Alegreya Sans SC", sans-serif;
+  width: 100%;
+  height: 100%;
 
-
-class App extends Component {
-  render() {
-    const title = "Trippy"
-    return (
-      <BrowserRouter>
-      <div>
-          <nav>
-            <ul style={{listStyle:"none"}}>
-              <li><Link to="/">Home</Link></li>
-            </ul>
-          </nav>
-          </div>
-      <Routes>
-        <Route exact path="/" component={Home} />
-        <Route path="/hotel/:city" component={Hotels}/>
-        <Route path="/hotel/:id" component={HotelPage}/>
-        <Route path="*" component={NotFound} />
-      </Routes>
-      </BrowserRouter>
-
-    )
+  @media (max-width: 376px) {
+    height 100vh;
   }
-}
 
-export default App
+
+`;
+
+const App = () => {
+  return (
+    <Body>
+      <BrowserRouter>
+        <CitiesContextProvider>
+          <FavoritesContextProvider>
+            <HotelContextProvider>
+              <div>
+                <Nav />
+              </div>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/hotels/:city" element={<Hotels />} />
+                <Route exact path="/hotelpage/:id" element={<HotelPage />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </HotelContextProvider>
+          </FavoritesContextProvider>
+        </CitiesContextProvider>
+      </BrowserRouter>
+    </Body>
+  );
+};
+export default App;
