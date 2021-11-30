@@ -7,6 +7,11 @@ const Marker = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  border: 1px solid white;
+
+  :hover {
+    background-color: #892b64
+  }
 
 `;
 

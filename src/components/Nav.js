@@ -7,7 +7,6 @@ import styled from "styled-components";
 
 const linkStyle = {
     color: "white",
-    padding: "20px",
     textDecoration: "none",
     fontSize: "25px",
     textAlign: "center",
@@ -16,86 +15,87 @@ const linkStyle = {
 const Nav = () => {
   const [ open, setOpen ] = useState(false)
 
+  const List = styled.div`
+    padding: 10px 10px 10px 30px ;
+    height: ${open ? "100%" : "50px"};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: ${open ? "column" : "row"}; 
+    
+    border-bottom: 1px solid white;
+
+    @media (max-width: 376px) {
+      justify-content: flex-end;
+      padding-right: 30px;
+    }
+  `
+
   const Title = styled.h1`
-  font-family: "Alegreya Sans SC", sans-serif;
-  margin-left: 30px;
-  ${open && "display: none" }
-`
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 36px;
+    ${open && "display: none"};
 
-  const List = styled.ul`
-	liststyle: none
-	margin: 5px;
-	padding: 10px 5px;
-	display: flex;
-	list-style: none;
-	justify-content: space-between;
-	align-items: center;
-  ${open ? "flex-direction: column" : "flex-direction: row" };
-  ${open && "justify-content: center"}
-
-	height: 50px;
-  border-bottom: 1px solid white;
-`
-
-  const Menu = styled.div`
-    display: flex;
-    ${open ? "flex-direction: column" : "flex-direction: row" }
-    justify-content: center;
-  `
-
-  const Categorie = styled.div`
-    display: flex;
-    @media (max-width: 376px) {
-      flex-direction: column;
-      justify-content: center;
-    }
-  
-  `
-
-  const Li = styled.li`
-    :hover {
-        font-weight: bold; 
-    }
-    @media (max-width: 376px) {
-      ${open ? "display: flex" : "display: none"}
+    @media (max-width: 280px) {
+      font-size: 28px;
     }
   `
 
   const Burger = styled.button`
-  display: none;
+    display: none;
 
-  @media (max-width: 376px) {
+    @media (max-width: 376px) {
+      display: flex;
+      margin-left: ${open ? "0" : "30px"};
+      border: none;
+      background: none;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;   
+    }
+  `
+
+  const Menu = styled.ul`
+    list-style: none;
     display: flex;
-    ${open ? "justify-content: center" : "justify-content: flex-end"} ;
-    align-items: center;
-    border: none;
-    background: none;
-    margin-right: 30px;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;   
-  }
-`
+    flex-direction: ${open ? " column" : "row"};
+    ${open && "text-align: center;"}
+  `
+
+  const Li = styled.li`
+    padding: 20px;
+
+    :hover {
+        font-weight: bold; 
+    }
+
+    @media (max-width: 376px) {
+      padding: 10px;
+      ${open ? "display: flex" : "display: none"}
+      ${open && "flex-direction: column" }
+      ${open && "align-items: center"}
+      
+    }
+  `
+
+ 
 
   return (
     <>
       <List>
         <Title>Trippy Travel</Title>
+        <Burger onClick={() => setOpen(!open)} >☰</Burger>
         <Menu>
-            <Categorie>
-              <Burger onClick={() => setOpen(!open)} >☰</Burger>
-                <Li>
-                  <Link to="/" style={linkStyle}>
-                    HOME
-                  </Link>
-                </Li>
-                <Li>
-                  <Link to="/favorites" style={linkStyle}>
-                    FAVORITES
-                  </Link>
-                </Li>
-            </Categorie>
-
+            <Li>
+              <Link to="/" style={linkStyle}>
+                HOME
+              </Link>
+            </Li>
+            <Li>
+              <Link to="/favorites" style={linkStyle}>
+                FAVORITES
+              </Link>
+            </Li> 
         </Menu>
       </List>
     </>
