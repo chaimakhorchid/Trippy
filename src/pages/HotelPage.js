@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import GoogleMapReact from "google-map-react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaBath } from "react-icons/fa";
 import HotelMap from "../components/HotelMap";
@@ -287,7 +285,7 @@ const HotelPage = () => {
                 <ListCommodities>
                   {infoHotel.commodities
                     .filter(function (ele, pos) {
-                      return infoHotel.commodities.indexOf(ele) == pos;
+                      return infoHotel.commodities.indexOf(ele) === pos;
                     })
                     .map((commoditie) => (
                       <Comm>

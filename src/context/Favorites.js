@@ -5,17 +5,19 @@ const FavoritesContext = createContext({})
 const FavoritesContextProvider = props => {
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem("favorites")) || [])
 
+  console.log(favorites)
+
   function handleFavoriteCardClick(id) {
     const favorites = localStorage.getItem("favorites");
 
     if (!favorites) {
       localStorage.setItem("favorites", JSON.stringify([id]));
-      setFavorites(JSON.stringify([id]))
+      setFavorites([id])
     } else {
       let array = JSON.parse(favorites);
       array = [...array, id];
       localStorage.setItem("favorites", JSON.stringify(array));
-      setFavorites(JSON.stringify(array))
+      setFavorites(array)
     } 
   }
 
@@ -41,7 +43,7 @@ const FavoritesContextProvider = props => {
     array.splice(index, 1)
 
     localStorage.setItem("favorites", JSON.stringify(array));
-    setFavorites(JSON.stringify(array))
+    setFavorites(array)
   }
 
   const value = {

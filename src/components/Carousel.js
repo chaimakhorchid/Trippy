@@ -7,9 +7,7 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import styled from "styled-components";
 import ArrayImg from "../components/ArrayImg";
-import { MdPictureAsPdf } from "react-icons/md";
 
 
 const Carrousels = (props) => {
@@ -27,14 +25,14 @@ const Carrousels = (props) => {
             <Slide index={index}>
               <img
                 src={`https://trippy-konexio.herokuapp.com/${picture}`}
-                alt=""
+                alt={picture}
               />
             </Slide>
           ) : (
             <Slide index={index}>
               <img
                 src="https://trippy-konexio.herokuapp.com//img/hotels/10541730_61.jpg"
-                alt="image"
+                alt="imagepardefault"
               />
             </Slide>
           )

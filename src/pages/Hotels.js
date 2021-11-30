@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 import HotelCard from "../components/HotelCard";
 import HotelMap from "../components/HotelMap";
-import { Link } from "react-router-dom";
+
 
 const Container = styled.div`
   display: flex;

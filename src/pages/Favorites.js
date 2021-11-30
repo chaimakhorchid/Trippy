@@ -16,7 +16,9 @@ const Card = styled.div`
 
 const Favorites = () => {
   const [listFavorite, setListFavorite] = useState([]);
-  const { favorites } = useContext(FavoritesContext || []);
+  const { favorites } = useContext(FavoritesContext);
+
+  // console.log(favorites)
 
   useEffect(() => {
     const favoritesArray = favorites.map((favorite) => {
@@ -31,7 +33,7 @@ const Favorites = () => {
         const upToDateResults = results.map((result) => result.result);
         setListFavorite(upToDateResults);
       });
-  }, []);
+  }, [favorites]);
 
   if (listFavorite.length === 0) {
     return (

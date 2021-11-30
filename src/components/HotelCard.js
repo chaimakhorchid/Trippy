@@ -1,11 +1,9 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import ArrayImg from "./ArrayImg";
 import { Link } from "react-router-dom";
-import { createPortal } from "react-dom";
-import HotelMap from "./HotelMap";
 import { FavoritesContext } from "../context/Favorites";
 
 const CardBox = styled.div`
