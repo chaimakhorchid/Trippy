@@ -51,7 +51,7 @@ const InfoContainer = styled.div`
 
   @media (max-width: 426px) {
     width: calc(100% - 55px);
-    height: 750px;
+    height: 950px;
     margin-bottom: 20px;
     flex-direction: column;
   }
