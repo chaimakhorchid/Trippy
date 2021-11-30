@@ -1,11 +1,27 @@
 import styled from 'styled-components'
-import {FaSwimmingPool, FaCocktail, FaSpa, FaWheelchair, FaSuitcase, FaDog, FaShuttleVan } from 'react-icons/fa';
-import {MdRoomService, MdOutlineSmokeFree, MdOutlineLanguage,MdFamilyRestroom} from 'react-icons/md';
-import {AiOutlineWifi} from 'react-icons/ai';
-import {CgGym} from 'react-icons/cg';
-import {GiCroissant, GiComputerFan, GiWashingMachine} from 'react-icons/gi';
-import {RiFridgeFill} from 'react-icons/ri';
-import {BiBed} from 'react-icons/bi';
+import { 
+  FaSwimmingPool, 
+  FaCocktail, 
+  FaSpa, 
+  FaWheelchair, 
+  FaLuggageCart, 
+  FaDog, 
+  FaShuttleVan, 
+  FaParking, 
+  FaSmoking 
+} from 'react-icons/fa';
+import { 
+  MdRoomService, 
+  MdOutlineSmokeFree, 
+  MdOutlineLanguage, 
+  MdFamilyRestroom, 
+  MdMeetingRoom 
+} from 'react-icons/md';
+import { AiOutlineWifi } from 'react-icons/ai';
+import { CgGym } from 'react-icons/cg';
+import { GiCroissant, GiComputerFan, GiWashingMachine } from 'react-icons/gi';
+import { RiFridgeFill } from 'react-icons/ri';
+import { BiBed } from 'react-icons/bi';
 
 
 const Icons = styled.div`
@@ -23,8 +39,9 @@ function Icon (props) {
         {props.comodity === "spa" && <FaSpa/>}
         {props.comodity === "gym" && <CgGym/>}
         {props.comodity === "disabled access" && <FaWheelchair/>}
-        {props.comodity === "conciergerie" && <FaSuitcase/>}
+        {props.comodity === "conciergerie" && <FaLuggageCart/>}
         {props.comodity === "non smoking" && <MdOutlineSmokeFree/>}
+        {props.comodity === "smoking" && <FaSmoking/>}
         {props.comodity === "dry cleaning" && <GiWashingMachine/>}
         {props.comodity === "multilingual staff" && <MdOutlineLanguage/>}
         {props.comodity === "breakfast included" &&  <GiCroissant/>}
@@ -34,6 +51,8 @@ function Icon (props) {
         {props.comodity === "family" &&  <MdFamilyRestroom/>}
         {props.comodity === "animals" &&  <FaDog/>}
         {props.comodity === "shuttle" &&  <FaShuttleVan/>}
+        {props.comodity === "parking" &&  <FaParking/>}
+        {props.comodity === "meeting rooms" &&  <MdMeetingRoom/>}
       </Icons>
     )
 }

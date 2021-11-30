@@ -5,8 +5,6 @@ const FavoritesContext = createContext({})
 const FavoritesContextProvider = props => {
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem("favorites")) || [])
 
-  console.log(typeof favorites)
-
   function handleFavoriteCardClick(id) {
     const favorites = localStorage.getItem("favorites");
 

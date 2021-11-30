@@ -19,7 +19,6 @@ const CityCard = (props) => {
 
     @media (max-width: 812px) {
         margin: 5% 6%;
-
     }
 
     div {
@@ -40,6 +39,10 @@ const CityCard = (props) => {
       font-size: 1.25rem;
       fontfamily: " Sans SC', sans-serif";
       margin-top: 10px;
+
+      @media (max-width: 812px) {
+        margin-top: 0px;
+    }
     }
   `;
 

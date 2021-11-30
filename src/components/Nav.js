@@ -15,30 +15,51 @@ const linkStyle = {
 const Nav = () => {
   const [ open, setOpen ] = useState(false)
 
-  const Title = styled.h1`
-    font-family: "Alegreya Sans SC", sans-serif;
-    margin-left: 30px;
-    ${open && "display: none" }
-  `
-
   const List = styled.div`
-    padding: 10px ;
+    padding: 10px 10px 10px 30px ;
     height: ${open ? "100%" : "50px"};
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
     flex-direction: ${open ? "column" : "row"}; 
-    justify-content: ${open ? " center" : "space-between" }; 
     
     border-bottom: 1px solid white;
-    
+
+    @media (max-width: 376px) {
+      justify-content: flex-end;
+      padding-right: 30px;
+    }
+  `
+
+  const Title = styled.h1`
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 36px;
+    ${open && "display: none"};
+
+    @media (max-width: 280px) {
+      font-size: 28px;
+    }
+  `
+
+  const Burger = styled.button`
+    display: none;
+
+    @media (max-width: 376px) {
+      display: flex;
+      margin-left: ${open ? "0" : "30px"};
+      border: none;
+      background: none;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;   
+    }
   `
 
   const Menu = styled.ul`
     list-style: none;
     display: flex;
-    flex-direction: ${open ? " column" : "row"}
-
+    flex-direction: ${open ? " column" : "row"};
+    ${open && "text-align: center;"}
   `
 
   const Li = styled.li`
@@ -57,36 +78,24 @@ const Nav = () => {
     }
   `
 
-  const Burger = styled.button`
-  display: none;
-
-  @media (max-width: 376px) {
-    display: flex;
-    align-items: center;
-    border: none;
-    background: none;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;   
-  }
-`
+ 
 
   return (
     <>
       <List>
         <Title>Trippy Travel</Title>
+        <Burger onClick={() => setOpen(!open)} >☰</Burger>
         <Menu>
-            <Burger onClick={() => setOpen(!open)} >☰</Burger>
-              <Li>
-                <Link to="/" style={linkStyle}>
-                  HOME
-                </Link>
-              </Li>
-              <Li>
-                <Link to="/favorites" style={linkStyle}>
-                  FAVORITES
-                </Link>
-              </Li> 
+            <Li>
+              <Link to="/" style={linkStyle}>
+                HOME
+              </Link>
+            </Li>
+            <Li>
+              <Link to="/favorites" style={linkStyle}>
+                FAVORITES
+              </Link>
+            </Li> 
         </Menu>
       </List>
     </>
