@@ -7,7 +7,6 @@ import styled from "styled-components";
 
 const linkStyle = {
     color: "white",
-    padding: "20px",
     textDecoration: "none",
     fontSize: "25px",
     textAlign: "center",
@@ -17,47 +16,44 @@ const Nav = () => {
   const [ open, setOpen ] = useState(false)
 
   const Title = styled.h1`
-  font-family: "Alegreya Sans SC", sans-serif;
-  margin-left: 30px;
-  ${open && "display: none" }
-`
-
-  const List = styled.ul`
-	liststyle: none
-	margin: 5px;
-	padding: 10px 5px;
-	display: flex;
-	list-style: none;
-	justify-content: space-between;
-	align-items: center;
-  ${open ? "flex-direction: column" : "flex-direction: row" };
-  ${open && "justify-content: center"}
-
-	height: 50px;
-  border-bottom: 1px solid white;
-`
-
-  const Menu = styled.div`
-    display: flex;
-    ${open ? "flex-direction: column" : "flex-direction: row" }
-    justify-content: center;
+    font-family: "Alegreya Sans SC", sans-serif;
+    margin-left: 30px;
+    ${open && "display: none" }
   `
 
-  const Categorie = styled.div`
+  const List = styled.div`
+    padding: 10px ;
+    height: ${open ? "100%" : "50px"};
     display: flex;
-    @media (max-width: 376px) {
-      flex-direction: column;
-      justify-content: center;
-    }
-  
+    align-items: center;
+
+    flex-direction: ${open ? "column" : "row"}; 
+    justify-content: ${open ? " center" : "space-between" }; 
+    
+    border-bottom: 1px solid white;
+    
+  `
+
+  const Menu = styled.ul`
+    list-style: none;
+    display: flex;
+    flex-direction: ${open ? " column" : "row"}
+
   `
 
   const Li = styled.li`
+    padding: 20px;
+
     :hover {
         font-weight: bold; 
     }
+
     @media (max-width: 376px) {
+      padding: 10px;
       ${open ? "display: flex" : "display: none"}
+      ${open && "flex-direction: column" }
+      ${open && "align-items: center"}
+      
     }
   `
 
@@ -66,11 +62,9 @@ const Nav = () => {
 
   @media (max-width: 376px) {
     display: flex;
-    ${open ? "justify-content: center" : "justify-content: flex-end"} ;
     align-items: center;
     border: none;
     background: none;
-    margin-right: 30px;
     font-size: 40px;
     color: white;
     cursor: pointer;   
@@ -82,20 +76,17 @@ const Nav = () => {
       <List>
         <Title>Trippy Travel</Title>
         <Menu>
-            <Categorie>
-              <Burger onClick={() => setOpen(!open)} >☰</Burger>
-                <Li>
-                  <Link to="/" style={linkStyle}>
-                    HOME
-                  </Link>
-                </Li>
-                <Li>
-                  <Link to="/favorites" style={linkStyle}>
-                    FAVORITES
-                  </Link>
-                </Li>
-            </Categorie>
-
+            <Burger onClick={() => setOpen(!open)} >☰</Burger>
+              <Li>
+                <Link to="/" style={linkStyle}>
+                  HOME
+                </Link>
+              </Li>
+              <Li>
+                <Link to="/favorites" style={linkStyle}>
+                  FAVORITES
+                </Link>
+              </Li> 
         </Menu>
       </List>
     </>

@@ -7,19 +7,31 @@ import HotelMap from "../components/HotelMap";
 import { Link } from "react-router-dom";
 import Bordure from "../assets/bordure.svg"
 
+const TitlePage = styled.h2`
+    text-align: left; 
+    margin: 20px 30px;
+    font-family: Abel;
+    text-transform: uppercase; 
+
+    @media (max-width: 376px) {
+        order: 2;
+    }
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 20px;
+  margin: 10px 30px;
   height: calc(100vh - 220px);
+
   @media (max-width: 376px) {
     flex-direction: column-reverse;
   }
 `
 
 const HotelsList = styled.div`
-  margin: 0 5px;
+  margin: 0 10px 0 0px;
   width: 50%;
   padding-right: 10px;
   overflow-y: scroll;
@@ -42,7 +54,6 @@ const HotelsList = styled.div`
 
 const HotelsMap = styled.div`
   width: 50%;
-  padding-right: 10px;
 
   @media (max-width: 376px) {
     width: 100%;
@@ -71,6 +82,7 @@ const CenterPages = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 20px 40px;
 `;
 
 const Hotels = () => {
@@ -100,39 +112,38 @@ const Hotels = () => {
 
   return (
     <>
-    <h1 style= {{ textAlign: "center", marginTop: "20px", fontFamily: "Abel", textTransform: "uppercase" }}>Hotels in {city}</h1>
+    <TitlePage>Hotels in {city}</TitlePage>
         <Container>
-        <HotelsList>
-            {hotels == null ? (
-            <p>En cours de chargement...</p>
-            ) : (
-            hotels.map((hotel, index) => (
-                // <Link
-                //   to={`/hotelpage/${hotel._id}`}
-                //   style={{ textDecoration: "none" }}
-                // >
-                <HotelCard
-                    key={index}
-                    name={hotel.name}
-                    price={hotel.price}
-                    stars={hotel.stars}
-                    image={hotel.pictures}
-                    id={hotel._id}
-                    selectedHotel={selectedHotel}
+            <HotelsList>
+                {hotels == null ? (
+                <p>En cours de chargement...</p>
+                ) : (
+                hotels.map((hotel, index) => (
+                    // <Link
+                    //   to={`/hotelpage/${hotel._id}`}
+                    //   style={{ textDecoration: "none" }}
+                    // >
+                    <HotelCard
+                        key={index}
+                        name={hotel.name}
+                        price={hotel.price}
+                        stars={hotel.stars}
+                        image={hotel.pictures}
+                        id={hotel._id}
+                        selectedHotel={selectedHotel}
+                    />
+                ))
+                )}
+            </HotelsList>
+            <HotelsMap>
+                <HotelMap
+                map="list"
+                center={center}
+                hotels={hotels}
+                selectedHotel={selectedHotel}
+                setSelectedHotel={setSelectedHotel}
                 />
-                // </Link>
-            ))
-            )}
-        </HotelsList>
-        <HotelsMap>
-            <HotelMap
-            map="list"
-            center={center}
-            hotels={hotels}
-            selectedHotel={selectedHotel}
-            setSelectedHotel={setSelectedHotel}
-            />
-        </HotelsMap>
+            </HotelsMap>
         </Container>
         <CenterPages>
             <Pages onClick={() => setPage(1)}>1</Pages>
