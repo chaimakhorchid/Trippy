@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CityCard from "../components/CityCard";
 import { CitiesContext } from "../context/ListCity";
 
+
 const CityContainer = styled.div`
     height: 80vh;
     margin-top: 3%;
@@ -16,9 +17,7 @@ const CityContainer = styled.div`
         flex-wrap: wrap;
         height 40vh;
         margin : 30px;
-
-      }
-
+    }
 ` 
 
 const Home = () => {
@@ -33,16 +32,18 @@ const Home = () => {
   console.log(cities);
 
   return (
-    <CityContainer>
-      {cities.map((city, index) => (
-        <CityCard
-          key={index}
-          source={city.source}
-          name={city.name}
-          slug={city.slug}
-        />
-      ))}
-    </CityContainer>
+
+      <CityContainer>
+        {cities.map((city, index) => (
+          <CityCard
+            key={index}
+            source={city.source}
+            name={city.name}
+            slug={city.slug}
+          />
+        ))}
+      </CityContainer>
+
   );
 };
 

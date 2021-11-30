@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react"
 import GoogleMapReact from "google-map-react"
 import HotelMarker from "./HotelMarker"
 

@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 import { FavoritesContext } from "../context/Favorites";
 
 const CardBox = styled.div`
-  margin: 0px 20px 33px 0px;
+  margin: 0px 0px 30px 0px;
   border-radius: 10px;
-  height: 118px;
+  height: 110px;
   display: flex;
   justify-content: flex-start;
   overflow: hidden;
