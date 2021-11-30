@@ -112,15 +112,18 @@ const Commodities = styled.div`
     width: 100%;
   }
 `;
+
 const Slider = styled.div`
   text-align: center;
-  margin: 0 auto;
+  margin: 0;
   width: 50%;
+
   @media (max-width: 376px) {
     order: -3;
     width: 100%;
   }
 `;
+
 const CardBox = styled.div`
   background: #b7094c;
   border-radius: 10px;
@@ -153,6 +156,7 @@ const Comm = styled.div`
 const IconItem = styled.div`
   margin-left: -20px;
 `;
+
 const BigCard = styled.div`
   display: flex;
   justifycontent: space-around;

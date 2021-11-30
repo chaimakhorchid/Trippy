@@ -124,12 +124,4 @@ const HotelCard = (props) => {
 
 export default HotelCard;
 
-// {!favIcon ? (
-//   <div onClick={props.handleFavoriteCardClick()}>
-//     <AiOutlineHeart size={24} />
-//   </div>
-// ) : (
-//   <div onClick={props.handleFavoriteCardClick()}>
-//     <AiFillHeart size={24} />
-//   </div>
-// )}
+

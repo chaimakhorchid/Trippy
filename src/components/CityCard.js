@@ -6,7 +6,7 @@ const CityCard = (props) => {
  
   const Card = styled.div`
     background-color: #b7094c;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     width: 16%;
     height: 250px;
     margin: 0 20px;
@@ -14,7 +14,7 @@ const CityCard = (props) => {
 
     :hover {
       background-color: #0091AD;
-      box-shadow: 0 0 10px #ADE8F4;
+      border: 2px solid white;
     }
 
     @media (max-width: 812px) {
@@ -26,7 +26,7 @@ const CityCard = (props) => {
         height: 75%;
         width: 100%;
         background-position: center;
-        border-radius: 1.5rem 1.5rem 0 0;    
+        border-radius: 1rem 1rem 0 0;    
     }
 
     @media (max-width: 376px) {
@@ -37,7 +37,6 @@ const CityCard = (props) => {
 
     p {
       font-size: 1.25rem;
-      fontfamily: " Sans SC', sans-serif";
       margin-top: 10px;
 
       @media (max-width: 812px) {

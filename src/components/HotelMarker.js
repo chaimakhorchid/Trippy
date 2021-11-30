@@ -8,9 +8,11 @@ const Marker = styled.div`
   justify-content: center;
   border-radius: 5px;
   border: 1px solid white;
+  font-weight: bold;
 
   :hover {
-    background-color: #892b64
+    background-color: #892b64;
+    border: 2px solid white;
   }
 
 `;
@@ -27,7 +29,7 @@ const HotelMarker = (props) => {
       style={{
         width: `${props.map === 'list'? '40px' : '120px' }`,
         height: `${props.map === 'list'? '25px' : '70px' }`,
-        padding: '5px',
+        padding: '2px',
       }}
       lat={props.lat}
       lng={props.lng}
