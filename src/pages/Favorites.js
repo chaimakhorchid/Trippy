@@ -32,7 +32,6 @@ const Favorites = () => {
         setListFavorite(upToDateResults);
       });
   }, []);
-  console.log("listFavorite", listFavorite);
 
   if (listFavorite.length === 0) {
     return (
