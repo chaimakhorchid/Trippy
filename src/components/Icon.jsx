@@ -20,7 +20,7 @@ import {
 import { AiOutlineWifi } from 'react-icons/ai';
 import { CgGym } from 'react-icons/cg';
 import { GiCroissant, GiComputerFan, GiWashingMachine } from 'react-icons/gi';
-import { RiFridgeFill } from 'react-icons/ri';
+import { RiFridgeFill, RiRestaurant2Fill } from 'react-icons/ri';
 import { BiBed } from 'react-icons/bi';
 
 
@@ -53,6 +53,7 @@ function Icon (props) {
         {props.comodity === "shuttle" &&  <FaShuttleVan/>}
         {props.comodity === "parking" &&  <FaParking/>}
         {props.comodity === "meeting rooms" &&  <MdMeetingRoom/>}
+        {props.comodity === "restaurant" &&  <RiRestaurant2Fill/>}
       </Icons>
     )
 }

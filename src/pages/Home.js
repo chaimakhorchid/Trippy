@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import CityCard from "../components/CityCard";
 import { CitiesContext } from "../context/ListCity";
-import HeaderImg from "../components/hotel2.png"
+import HeaderImg from "../assets/hotel2.png"
 
 const Header = styled.div`
   display: flex;
@@ -31,12 +31,13 @@ const HeaderText = styled.h1`
 `
 const Title2 = styled.h2 `
   text-align: center;
-  margin: 30px;
+  margin-top: 20px;
   font-size: 28px;
   font-family: "Alegreya Sans SC", sans-serif;
+
 `
 const CityContainer = styled.div`
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -70,7 +71,7 @@ const Home = () => {
           <h1>find your hotel</h1>
           <h5>All around the world</h5>
         </HeaderText>
-        <img src={HeaderImg} style= {{ width: "350px" }}/>
+        <img src={HeaderImg} style= {{ width: "350px" }} alt="find hotel"/>
       </Header>
       <Title2>Populars destinations</Title2>
       <CityContainer>

@@ -9,7 +9,7 @@ const CityCard = (props) => {
     border-radius: 1rem;
     width: 16%;
     height: 250px;
-    margin: 0 20px;
+    margin: 20px;
     text-align: center;
 
     :hover {
@@ -45,8 +45,6 @@ const CityCard = (props) => {
     }
   `;
 
-  // console.log(props)
-
   return (
     <>
       <Card>
@@ -68,4 +66,5 @@ const CityCard = (props) => {
     </>
   );
 };
+
 export default CityCard;

@@ -7,8 +7,19 @@ import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaBath } from "react-icons/fa";
 import HotelMap from "../components/HotelMap";
 import Icon from "../components/Icon";
-import Carrousels from "../components/Carousel";
+import Carousel from "../components/Carousel";
 import { FavoritesContext } from "../context/Favorites";
+
+
+const SliderHeader = styled.div`
+  margin: 0;
+  width: 40%;
+
+  @media (max-width: 376px) {
+    order: -3;
+    width: 100%;
+  }
+`;
 
 const Container = styled.div`
   @media (max-width: 376px) {
@@ -18,7 +29,7 @@ const Container = styled.div`
 `;
 const HotelTitle = styled.div`
   font-size: 20px;
-  margin: 40px;
+  margin: 30px;
 
   h2 {
     text-align: end;
@@ -113,16 +124,7 @@ const Commodities = styled.div`
   }
 `;
 
-const Slider = styled.div`
-  text-align: center;
-  margin: 0;
-  width: 50%;
 
-  @media (max-width: 376px) {
-    order: -3;
-    width: 100%;
-  }
-`;
 
 const CardBox = styled.div`
   background: #b7094c;
@@ -234,44 +236,37 @@ const HotelPage = () => {
 
   return (
     <>
-      <section>
+        <SliderHeader>
+            <Carousel image={infoHotel.pictures} />
+        </SliderHeader>
         <Container>
-          <HotelTitle>
-            <h4>{infoHotel.name}</h4>
-            <p>{infoHotel.address}</p>
-            <Line>
-              <HotelStars>
-                {[...Array(infoHotel.stars)].map((i) => (
-                  <AiFillStar size={20} color={"yellow"} />
-                ))}
-              </HotelStars>
-              {!isFavorite(infoHotel._id) ? (
-                <Favorites
-                  onClick={() => handleFavoriteCardClick(infoHotel._id)}
-                >
-                  <AiOutlineHeart size={24} />
-                </Favorites>
-              ) : (
-                <Favorites
-                  onClick={() => handleUnfavoriteCardClick(infoHotel._id)}
-                >
-                  <AiFillHeart size={24} />
-                </Favorites>
-              )}
-              <h2>{infoHotel.price}€</h2>
-            </Line>
-          </HotelTitle>
-          <Slider>
-            <Carrousels image={infoHotel.pictures} />
-          </Slider>
-          <InfoContainer>
-            <MapContainer>
-              <HotelMap
-                map="page-hotel"
-                hotels={[infoHotel]}
-                center={infoHotel.location}
-              />
-            </MapContainer>
+            <HotelTitle>
+                <h3>{infoHotel.name}</h3>
+                <p>{infoHotel.address}</p>
+                <HotelStars>
+                    {[...Array(infoHotel.stars)].map((i) => (
+                    <AiFillStar size={20} color={"yellow"} />
+                    ))}
+                </HotelStars>
+                {!isFavorite(infoHotel._id) ? (
+                    <Favorites onClick={() => handleFavoriteCardClick(infoHotel._id)}>
+                        <AiOutlineHeart size={24} />
+                    </Favorites>
+                    ) : (
+                    <Favorites onClick={() => handleUnfavoriteCardClick(infoHotel._id)}>
+                        <AiFillHeart size={24} />
+                    </Favorites>
+                )}
+                <h2>{infoHotel.price}€</h2>
+            </HotelTitle>
+            <InfoContainer>
+                <MapContainer>
+                <HotelMap
+                    map="page-hotel"
+                    hotels={[infoHotel]}
+                    center={infoHotel.location}
+                />
+                </MapContainer>
             <div>
               <Card>
                 <h2>Informations :</h2>
@@ -319,7 +314,6 @@ const HotelPage = () => {
             ))}
           </BigCard>
         </Container>
-      </section>
     </>
   );
 };
